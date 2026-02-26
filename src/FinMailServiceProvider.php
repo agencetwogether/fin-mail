@@ -111,6 +111,7 @@ class FinMailServiceProvider extends PackageServiceProvider
     {
         \Illuminate\Auth\Notifications\VerifyEmail::toMailUsing(function (mixed $notifiable, string $url): Mail\TemplateMail {
             return Mail\TemplateMail::make('user-verify-email')
+                ->to($notifiable->getEmailForVerification())
                 ->models([
                     'user' => $notifiable,
                     'url' => new Helpers\TokenValue($url),
@@ -121,16 +122,34 @@ class FinMailServiceProvider extends PackageServiceProvider
     protected function registerPasswordResetOverride(): void
     {
         \Illuminate\Auth\Notifications\ResetPassword::toMailUsing(function (mixed $notifiable, string $token): Mail\TemplateMail {
-            $url = url(route('password.reset', [
-                'token' => $token,
-                'email' => $notifiable->getEmailForPasswordReset(),
-            ], false));
+            $url = $this->buildPasswordResetUrl($notifiable, $token);
 
             return Mail\TemplateMail::make('user-password-reset')
+                ->to($notifiable->getEmailForPasswordReset())
                 ->models([
                     'user' => $notifiable,
                     'url' => new Helpers\TokenValue($url),
                 ]);
         });
+    }
+
+    protected function buildPasswordResetUrl(mixed $notifiable, string $token): string
+    {
+        $email = $notifiable->getEmailForPasswordReset();
+
+        // Filament panel reset route
+        if (class_exists(\Filament\Facades\Filament::class)) {
+            try {
+                return \Filament\Facades\Filament::getResetPasswordUrl($token, $notifiable);
+            } catch (\Throwable) {
+                // Panel may not be available in this context.
+            }
+        }
+
+        // Standard Laravel reset route (Breeze/Fortify)
+        return url(route('password.reset', [
+            'token' => $token,
+            'email' => $email,
+        ]));
     }
 }

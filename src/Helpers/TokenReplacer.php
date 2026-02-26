@@ -202,6 +202,10 @@ class TokenReplacer
             return (string) $value->value;
         }
 
+        if ($value instanceof \Stringable) {
+            return (string) $value;
+        }
+
         return null;
     }
 
