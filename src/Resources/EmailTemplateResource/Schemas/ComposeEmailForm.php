@@ -20,7 +20,7 @@ use FinityLabs\FinMail\Settings\GeneralSettings;
 
 class ComposeEmailForm
 {
-    public static function configure(Schema $form, EmailTemplate $record): Schema
+    public static function configure(Schema $schema, EmailTemplate $record): Schema
     {
         $editor = app(EditorContract::class);
 
@@ -32,7 +32,7 @@ class ComposeEmailForm
             ->mapWithKeys(fn (array $s): array => [$s['address'] => "{$s['name']} <{$s['address']}>"])
             ->all();
 
-        return $form
+        return $schema
             ->columns(3)
             ->components([
                 Group::make()

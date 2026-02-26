@@ -32,9 +32,9 @@ class EmailThemeResource extends Resource
         return __('fin-mail::fin-mail.navigation.themes');
     }
 
-    public static function form(Schema $form): Schema
+    public static function form(Schema $schema): Schema
     {
-        return EmailThemeForm::configure($form);
+        return EmailThemeForm::configure($schema);
     }
 
     public static function table(Table $table): Table

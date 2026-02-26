@@ -21,11 +21,11 @@ use FinityLabs\FinMail\Settings\GeneralSettings;
 
 class EmailTemplateForm
 {
-    public static function configure(Schema $form): Schema
+    public static function configure(Schema $schema): Schema
     {
         $editor = app(EditorContract::class);
 
-        return $form->schema([
+        return $schema->schema([
 
             Tabs::make('Template')
                 ->tabs([

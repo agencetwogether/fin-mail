@@ -8,6 +8,7 @@ use BackedEnum;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\SettingsPage;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -34,18 +35,21 @@ class ManageAttachmentSettings extends SettingsPage
         return __('fin-mail::fin-mail.settings.tabs.attachments');
     }
 
-    public function form(Schema $form): Schema
+    public function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->schema([
             Section::make(__('fin-mail::fin-mail.settings.sections.attachment_rules'))
                 ->description(__('fin-mail::fin-mail.settings.sections.attachment_rules_description'))
                 ->schema([
-                    TextInput::make('max_size_mb')
-                        ->label(__('fin-mail::fin-mail.settings.fields.max_file_size'))
-                        ->numeric()
-                        ->required()
-                        ->minValue(1)
-                        ->maxValue(100),
+                    Grid::make(['lg' => 3])
+                        ->schema([
+                            TextInput::make('max_size_mb')
+                                ->label(__('fin-mail::fin-mail.settings.fields.max_file_size'))
+                                ->numeric()
+                                ->required()
+                                ->minValue(1)
+                                ->maxValue(100),
+                        ]),
 
                     TagsInput::make('allowed_types')
                         ->label(__('fin-mail::fin-mail.settings.fields.allowed_extensions'))

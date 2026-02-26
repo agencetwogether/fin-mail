@@ -36,9 +36,9 @@ class ManageBrandingSettings extends SettingsPage
         return __('fin-mail::fin-mail.settings.tabs.branding');
     }
 
-    public function form(Schema $form): Schema
+    public function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->schema([
             Section::make(__('fin-mail::fin-mail.settings.sections.logo'))
                 ->schema([
                     TextInput::make('logo')

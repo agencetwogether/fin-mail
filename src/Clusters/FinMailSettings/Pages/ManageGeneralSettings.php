@@ -34,9 +34,9 @@ class ManageGeneralSettings extends SettingsPage
         return __('fin-mail::fin-mail.settings.tabs.general');
     }
 
-    public function form(Schema $form): Schema
+    public function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->schema([
             Section::make(__('fin-mail::fin-mail.settings.sections.default_sender'))
                 ->description(__('fin-mail::fin-mail.settings.sections.default_sender_description'))
                 ->schema([

@@ -54,9 +54,9 @@ class ComposeEmail extends Page
         ]);
     }
 
-    public function form(Schema $form): Schema
+    public function form(Schema $schema): Schema
     {
-        return ComposeEmailForm::configure($form, $this->record);
+        return ComposeEmailForm::configure($schema, $this->record);
     }
 
     public function send(): void

@@ -9,7 +9,9 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Text;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use FinityLabs\FinMail\Enums\CleanupFrequency;
@@ -62,9 +64,9 @@ class ManageLoggingSettings extends SettingsPage
         return $data;
     }
 
-    public function form(Schema $form): Schema
+    public function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->schema([
             Section::make(__('fin-mail::fin-mail.settings.sections.logging'))
                 ->description(__('fin-mail::fin-mail.settings.sections.logging_description'))
                 ->schema([
@@ -76,13 +78,17 @@ class ManageLoggingSettings extends SettingsPage
                         ->label(__('fin-mail::fin-mail.settings.fields.store_rendered_body'))
                         ->helperText(__('fin-mail::fin-mail.settings.fields.store_rendered_body_helper')),
 
-                    TextInput::make('retention_days')
-                        ->label(__('fin-mail::fin-mail.settings.fields.retention_days'))
-                        ->numeric()
-                        ->nullable()
-                        ->minValue(1)
-                        ->maxValue(3650)
-                        ->helperText(__('fin-mail::fin-mail.settings.fields.retention_days_helper')),
+                    Grid::make(['lg' => 3])
+                        ->schema([
+                            TextInput::make('retention_days')
+                                ->label(__('fin-mail::fin-mail.settings.fields.retention_days'))
+                                ->numeric()
+                                ->nullable()
+                                ->minValue(1)
+                                ->maxValue(3650),
+                            Text::make(__('fin-mail::fin-mail.settings.fields.retention_days_helper'))
+                                ->columnSpanFull(),
+                        ]),
                 ]),
 
             Section::make(__('fin-mail::fin-mail.settings.sections.cleanup'))
@@ -93,12 +99,15 @@ class ManageLoggingSettings extends SettingsPage
                         ->helperText(__('fin-mail::fin-mail.settings.fields.cleanup_enabled_helper'))
                         ->live(),
 
-                    Select::make('cleanup_frequency')
-                        ->label(__('fin-mail::fin-mail.settings.fields.cleanup_frequency'))
-                        ->options(CleanupFrequency::class)
-                        ->native(false)
-                        ->required()
-                        ->visible(fn (callable $get): bool => (bool) $get('cleanup_enabled')),
+                    Grid::make(['lg' => 3])
+                        ->schema([
+                            Select::make('cleanup_frequency')
+                                ->label(__('fin-mail::fin-mail.settings.fields.cleanup_frequency'))
+                                ->options(CleanupFrequency::class)
+                                ->native(false)
+                                ->required()
+                                ->visible(fn (callable $get): bool => (bool) $get('cleanup_enabled')),
+                        ]),
                 ]),
         ]);
     }
