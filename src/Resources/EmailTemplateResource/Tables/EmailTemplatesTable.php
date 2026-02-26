@@ -20,9 +20,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
-use FinityLabs\FinMail\Enums\TemplateCategory;
 use FinityLabs\FinMail\Mail\TemplateMail;
 use FinityLabs\FinMail\Resources\EmailTemplateResource\EmailTemplateResource;
+use FinityLabs\FinMail\Settings\GeneralSettings;
 use Illuminate\Support\Facades\Mail;
 
 class EmailTemplatesTable
@@ -46,7 +46,9 @@ class EmailTemplatesTable
                     ->getStateUsing(fn ($record): array => $record->getTranslatedLocales('name')),
 
                 TextColumn::make('category')
-                    ->badge(),
+                    ->badge()
+                    ->formatStateUsing(fn (string $state): string => collect(app(GeneralSettings::class)->categories)
+                        ->firstWhere('key', $state)['label'] ?? $state),
 
                 TextColumn::make('subject')
                     ->limit(40)
@@ -68,7 +70,9 @@ class EmailTemplatesTable
             ])
             ->filters([
                 SelectFilter::make('category')
-                    ->options(TemplateCategory::class),
+                    ->options(fn (): array => collect(app(GeneralSettings::class)->categories)
+                        ->pluck('label', 'key')
+                        ->all()),
 
                 TernaryFilter::make('is_active')
                     ->label(__('fin-mail::fin-mail.template.columns.active')),

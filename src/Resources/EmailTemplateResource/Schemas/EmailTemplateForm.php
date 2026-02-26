@@ -16,7 +16,6 @@ use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use FinityLabs\FinMail\Contracts\EditorContract;
-use FinityLabs\FinMail\Enums\TemplateCategory;
 use FinityLabs\FinMail\Settings\GeneralSettings;
 
 class EmailTemplateForm
@@ -46,8 +45,10 @@ class EmailTemplateForm
                                     ->maxLength(255),
 
                                 Select::make('category')
-                                    ->options(TemplateCategory::class)
-                                    ->default(TemplateCategory::Transactional)
+                                    ->options(fn (): array => collect(app(GeneralSettings::class)->categories)
+                                        ->pluck('label', 'key')
+                                        ->all())
+                                    ->default('transactional')
                                     ->native(false)
                                     ->required(),
                             ]),

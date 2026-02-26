@@ -14,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->string('key', 255)->unique();
             $table->json('name');
-            $table->unsignedTinyInteger('category')->default(1)->index();
+            $table->string('category', 100)->default('transactional')->index();
             $table->json('tags')->nullable();
 
             // Content (translatable — stored as JSON: {"en": "...", "hu": "..."})

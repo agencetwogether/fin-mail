@@ -405,13 +405,6 @@ return [
             2 => 'Weekly',
             3 => 'Monthly',
         ],
-
-        'template_category' => [
-            1 => 'Transactional',
-            2 => 'Marketing',
-            3 => 'System',
-            4 => 'Notification',
-        ],
     ],
 
 ];

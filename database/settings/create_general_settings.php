@@ -16,10 +16,10 @@ return new class extends SettingsMigration
             ['code' => 'en', 'display' => 'English', 'flag-icon' => 'gb'],
         ]);
         $this->migrator->add('fin-mail.categories', [
-            'transactional' => 'Transactional',
-            'marketing' => 'Marketing',
-            'system' => 'System',
-            'notification' => 'Notification',
+            ['key' => 'transactional', 'label' => 'Transactional'],
+            ['key' => 'marketing', 'label' => 'Marketing'],
+            ['key' => 'system', 'label' => 'System'],
+            ['key' => 'notification', 'label' => 'Notification'],
         ]);
     }
 };

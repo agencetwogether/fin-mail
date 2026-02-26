@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use FinityLabs\FinMail\Enums\TemplateCategory;
 use FinityLabs\FinMail\Models\EmailTemplate;
 use FinityLabs\FinMail\Models\EmailTheme;
 
@@ -17,7 +16,7 @@ it('can create a template with translations', function () {
     $template = EmailTemplate::create([
         'key' => 'test-template',
         'name' => ['en' => 'Test Template'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Test Subject'],
         'body' => ['en' => '<p>Hello {{ user.name }}</p>'],
         'is_active' => true,
@@ -33,7 +32,7 @@ it('finds template by key', function () {
     EmailTemplate::create([
         'key' => 'welcome',
         'name' => ['en' => 'Welcome'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Welcome!'],
         'body' => ['en' => 'Hello'],
         'is_active' => true,
@@ -49,7 +48,7 @@ it('sets locale when finding by key with locale parameter', function () {
     $template = EmailTemplate::create([
         'key' => 'welcome',
         'name' => ['en' => 'Welcome', 'hu' => 'Üdvözöljük'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Welcome!', 'hu' => 'Üdvözöljük!'],
         'body' => ['en' => 'Hello', 'hu' => 'Helló'],
         'is_active' => true,
@@ -66,7 +65,7 @@ it('does not find inactive templates', function () {
     EmailTemplate::create([
         'key' => 'disabled',
         'name' => ['en' => 'Disabled'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Test'],
         'body' => ['en' => 'Test'],
         'is_active' => false,
@@ -81,7 +80,7 @@ it('renders tokens in subject and body', function () {
     $template = EmailTemplate::create([
         'key' => 'invoice',
         'name' => ['en' => 'Invoice'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Invoice from {{ config.app.name }}'],
         'body' => ['en' => '<p>Hello {{ customer.name }}</p>'],
         'is_active' => true,
@@ -102,7 +101,7 @@ it('renders with specific locale', function () {
     $template = EmailTemplate::create([
         'key' => 'greeting',
         'name' => ['en' => 'Greeting', 'hu' => 'Üdvözlet'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Hello {{ user.name }}', 'hu' => 'Szia {{ user.name }}'],
         'body' => ['en' => '<p>Welcome</p>', 'hu' => '<p>Üdvözöljük</p>'],
         'is_active' => true,
@@ -123,7 +122,7 @@ it('stores multiple translations in one record', function () {
     $template = EmailTemplate::create([
         'key' => 'multi-lang',
         'name' => ['en' => 'English Name', 'hu' => 'Magyar Név', 'de' => 'Deutscher Name'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'English Subject'],
         'body' => ['en' => 'English Body'],
         'is_active' => true,
@@ -138,7 +137,7 @@ it('saves version snapshots with all translations', function () {
     $template = EmailTemplate::create([
         'key' => 'versioned',
         'name' => ['en' => 'Versioned'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Original Subject', 'hu' => 'Eredeti Tárgy'],
         'body' => ['en' => 'Original Body'],
         'is_active' => true,
@@ -155,7 +154,7 @@ it('increments version numbers', function () {
     $template = EmailTemplate::create([
         'key' => 'multi-version',
         'name' => ['en' => 'Multi Version'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'V1'],
         'body' => ['en' => 'V1'],
         'is_active' => true,
@@ -174,7 +173,7 @@ it('enforces max version limit', function () {
     $template = EmailTemplate::create([
         'key' => 'max-version',
         'name' => ['en' => 'Max'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Test'],
         'body' => ['en' => 'Test'],
         'is_active' => true,
@@ -192,7 +191,7 @@ it('restores a previous version with all translations', function () {
     $template = EmailTemplate::create([
         'key' => 'restorable',
         'name' => ['en' => 'Restorable'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Original', 'hu' => 'Eredeti'],
         'body' => ['en' => 'Original body'],
         'is_active' => true,
@@ -225,7 +224,7 @@ it('belongs to a theme', function () {
     $template = EmailTemplate::create([
         'key' => 'themed',
         'name' => ['en' => 'Themed'],
-        'category' => TemplateCategory::Transactional,
+        'category' => 'transactional',
         'subject' => ['en' => 'Test'],
         'body' => ['en' => 'Test'],
         'is_active' => true,

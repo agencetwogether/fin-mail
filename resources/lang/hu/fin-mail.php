@@ -405,13 +405,6 @@ return [
             2 => 'Hetente',
             3 => 'Havonta',
         ],
-
-        'template_category' => [
-            1 => 'Tranzakciós',
-            2 => 'Marketing',
-            3 => 'Rendszer',
-            4 => 'Értesítés',
-        ],
     ],
 
 ];

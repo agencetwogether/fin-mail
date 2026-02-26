@@ -14,8 +14,8 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Text;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use FinityLabs\FinMail\Enums\CleanupFrequency;
 use FinityLabs\FinMail\Clusters\FinMailSettings\FinMailSettings;
+use FinityLabs\FinMail\Enums\CleanupFrequency;
 use FinityLabs\FinMail\Settings\LoggingSettings;
 
 class ManageLoggingSettings extends SettingsPage

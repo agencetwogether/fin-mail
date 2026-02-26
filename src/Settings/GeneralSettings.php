@@ -39,10 +39,10 @@ class GeneralSettings extends Settings
                 ['code' => 'en', 'display' => 'English', 'flag-icon' => 'gb'],
             ],
             'categories' => [
-                'transactional' => 'Transactional',
-                'marketing' => 'Marketing',
-                'system' => 'System',
-                'notification' => 'Notification',
+                ['key' => 'transactional', 'label' => 'Transactional'],
+                ['key' => 'marketing', 'label' => 'Marketing'],
+                ['key' => 'system', 'label' => 'System'],
+                ['key' => 'notification', 'label' => 'Notification'],
             ],
         ];
     }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace FinityLabs\FinMail\Database\Seeders;
 
-use FinityLabs\FinMail\Enums\TemplateCategory;
 use FinityLabs\FinMail\Models\EmailTemplate;
 use FinityLabs\FinMail\Models\EmailTheme;
 use FinityLabs\FinMail\Settings\GeneralSettings;
@@ -103,7 +102,7 @@ class EmailTemplateSeeder extends Seeder
                 'de' => 'Neuen Benutzer begrüßen',
                 'hu' => 'Új felhasználó üdvözlése',
             ],
-            'category' => TemplateCategory::Transactional,
+            'category' => 'transactional',
             'subject' => [
                 'en' => 'Welcome to {{ config.app.name }}, {{ user.name }}!',
                 'de' => 'Willkommen bei {{ config.app.name }}, {{ user.name }}!',
@@ -172,7 +171,7 @@ HTML,
                 'de' => 'E-Mail-Adresse bestätigen',
                 'hu' => 'E-mail cím megerősítése',
             ],
-            'category' => TemplateCategory::System,
+            'category' => 'system',
             'subject' => [
                 'en' => 'Verify your email address',
                 'de' => 'Bestätigen Sie Ihre E-Mail-Adresse',
@@ -241,7 +240,7 @@ HTML,
                 'de' => 'Passwort zurücksetzen',
                 'hu' => 'Jelszó visszaállítás',
             ],
-            'category' => TemplateCategory::System,
+            'category' => 'system',
             'subject' => [
                 'en' => 'Reset your password',
                 'de' => 'Setzen Sie Ihr Passwort zurück',
@@ -313,7 +312,7 @@ HTML,
                 'de' => 'Passwort geändert',
                 'hu' => 'Jelszó megváltoztatva',
             ],
-            'category' => TemplateCategory::System,
+            'category' => 'system',
             'subject' => [
                 'en' => 'Your password has been changed',
                 'de' => 'Ihr Passwort wurde geändert',
@@ -366,7 +365,7 @@ HTML,
                 'de' => 'Allgemeine Benachrichtigung',
                 'hu' => 'Általános értesítés',
             ],
-            'category' => TemplateCategory::Notification,
+            'category' => 'notification',
             'subject' => [
                 'en' => '{{ subject | "Notification from " }}{{ config.app.name }}',
                 'de' => '{{ subject | "Benachrichtigung von " }}{{ config.app.name }}',

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace FinityLabs\FinMail\Models;
 
-use FinityLabs\FinMail\Enums\TemplateCategory;
 use FinityLabs\FinMail\Helpers\TokenReplacer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -48,7 +47,6 @@ class EmailTemplate extends Model
     protected function casts(): array
     {
         return [
-            'category' => TemplateCategory::class,
             'from' => 'array',
             'tags' => 'array',
             'is_active' => 'boolean',
@@ -88,7 +86,7 @@ class EmailTemplate extends Model
         return $query->where('is_active', true);
     }
 
-    public function scopeByCategory(Builder $query, TemplateCategory $category): Builder
+    public function scopeByCategory(Builder $query, string $category): Builder
     {
         return $query->where('category', $category);
     }
