@@ -42,15 +42,19 @@ class ComposeEmail extends Page
     {
         $this->record = $record;
 
+        $locale = app()->getLocale();
+        $rendered = $record->render([], $locale);
+
         $this->form->fill([
             'template_key' => $record->key,
             'from' => $record->from['address'] ?? app(GeneralSettings::class)->default_from_address,
             'to' => [],
             'cc' => [],
             'bcc' => [],
-            'subject' => $record->subject,
-            'preheader' => $record->preheader ?? '',
-            'body' => $record->body,
+            'locale' => $locale,
+            'subject' => $rendered['subject'],
+            'preheader' => $rendered['preheader'],
+            'body' => $rendered['body'],
         ]);
     }
 

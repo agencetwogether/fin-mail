@@ -23,7 +23,7 @@ class SendWelcomeEmail
 
         try {
             Mail::to($user->email)->send(
-                TemplateMail::make('user-welcome')
+                TemplateMail::make('user-welcome', app()->getLocale())
                     ->models(['user' => $user])
             );
         } catch (\Throwable $e) {

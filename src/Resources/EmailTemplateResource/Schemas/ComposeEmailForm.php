@@ -8,6 +8,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
@@ -69,6 +70,24 @@ class ComposeEmailForm
                         Section::make(__('fin-mail::fin-mail.compose.sections.content'))
                             ->icon(Heroicon::OutlinedDocumentText)
                             ->schema([
+                                Select::make('locale')
+                                    ->label(__('fin-mail::fin-mail.compose.fields.locale'))
+                                    ->options(fn (): array => collect($mailSettings->languages)->pluck('display', 'code')->all())
+                                    ->default(fn (): string => app()->getLocale())
+                                    ->native(false)
+                                    ->required()
+                                    ->live()
+                                    ->afterStateUpdated(function (?string $state, Set $set) use ($record): void {
+                                        if (! $state) {
+                                            return;
+                                        }
+
+                                        $rendered = $record->render([], $state);
+                                        $set('subject', $rendered['subject']);
+                                        $set('preheader', $rendered['preheader']);
+                                        $set('body', $rendered['body']);
+                                    }),
+
                                 TextInput::make('subject')
                                     ->required()
                                     ->maxLength(255)

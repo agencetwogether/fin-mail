@@ -110,7 +110,7 @@ class FinMailServiceProvider extends PackageServiceProvider
     protected function registerVerificationOverride(): void
     {
         \Illuminate\Auth\Notifications\VerifyEmail::toMailUsing(function (mixed $notifiable, string $url): Mail\TemplateMail {
-            return Mail\TemplateMail::make('user-verify-email')
+            return Mail\TemplateMail::make('user-verify-email', app()->getLocale())
                 ->to($notifiable->getEmailForVerification())
                 ->models([
                     'user' => $notifiable,
@@ -124,7 +124,7 @@ class FinMailServiceProvider extends PackageServiceProvider
         \Illuminate\Auth\Notifications\ResetPassword::toMailUsing(function (mixed $notifiable, string $token): Mail\TemplateMail {
             $url = $this->buildPasswordResetUrl($notifiable, $token);
 
-            return Mail\TemplateMail::make('user-password-reset')
+            return Mail\TemplateMail::make('user-password-reset', app()->getLocale())
                 ->to($notifiable->getEmailForPasswordReset())
                 ->models([
                     'user' => $notifiable,

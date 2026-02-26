@@ -11,6 +11,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Support\Enums\Width;
@@ -102,10 +103,17 @@ class EmailTemplatesTable
                                 ->email()
                                 ->required()
                                 ->default(fn (): ?string => auth()->user()?->email),
+
+                            Select::make('locale')
+                                ->label(__('fin-mail::fin-mail.template.actions.send_test_locale'))
+                                ->options(fn (): array => collect(app(GeneralSettings::class)->languages)->pluck('display', 'code')->all())
+                                ->default(fn (): string => app()->getLocale())
+                                ->native(false)
+                                ->required(),
                         ])
                         ->action(function ($record, array $data): void {
                             try {
-                                $mail = TemplateMail::make($record->key)
+                                $mail = TemplateMail::make($record->key, $data['locale'])
                                     ->models([
                                         'user' => auth()->user(),
                                     ]);

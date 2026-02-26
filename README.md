@@ -152,6 +152,28 @@ $invoice->sentEmailsCount();                  // Count
 | `{% if token %}...{% endif %}` | `{% if user.is_premium %}...{% endif %}` | Conditional |
 | `{% if token %}...{% else %}...{% endif %}` | | If/else |
 
+## Auth Email Overrides
+
+FinMail can replace Laravel's default authentication emails (verification, password reset) with your custom templates, and optionally send a welcome email on registration.
+
+### Enable overrides
+
+Navigate to **Settings → Auth Emails** in the admin panel and toggle the overrides you want.
+
+### Required templates
+
+Create templates with these keys (the seeder includes them by default):
+
+| Template Key | Purpose | Available Tokens |
+|---|---|---|
+| `user-verify-email` | Email verification link | `{{ user.name }}`, `{{ user.email }}`, `{{ url }}` |
+| `user-password-reset` | Password reset link | `{{ user.name }}`, `{{ user.email }}`, `{{ url }}` |
+| `user-welcome` | Welcome email after registration | `{{ user.name }}`, `{{ user.email }}` |
+
+### Locale support
+
+Auth email overrides automatically use the active application locale (`app()->getLocale()`). If you use a language switcher plugin, the emails will be sent in the user's selected language — provided the template has a translation for that locale.
+
 ## Configuration
 
 Publish the config:

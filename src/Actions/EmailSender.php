@@ -51,7 +51,7 @@ class EmailSender
                 throw new \RuntimeException('No template key provided.');
             }
 
-            $mail = TemplateMail::make($templateKey)
+            $mail = TemplateMail::make($templateKey, $this->data['locale'] ?? null)
                 ->models($this->resolveModels())
                 ->overrideSubject($this->data['subject'])
                 ->overrideBody($this->data['body'])
