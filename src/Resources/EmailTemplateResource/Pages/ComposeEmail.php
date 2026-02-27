@@ -9,12 +9,14 @@ use Filament\Actions\Action;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Resources\Pages\Page;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\Width;
 use Filament\Support\Icons\Heroicon;
 use FinityLabs\FinMail\Actions\EmailSender;
 use FinityLabs\FinMail\Models\EmailTemplate;
 use FinityLabs\FinMail\Resources\EmailTemplateResource\EmailTemplateResource;
 use FinityLabs\FinMail\Resources\EmailTemplateResource\Schemas\ComposeEmailForm;
 use FinityLabs\FinMail\Settings\GeneralSettings;
+use Tiptap\Editor as TiptapEditor;
 
 /**
  * Full-page compose screen.
@@ -80,40 +82,29 @@ class ComposeEmail extends Page
         }
     }
 
-    public function preview(): void
-    {
-        $this->form->getState();
-
-        $this->dispatch('open-modal', id: 'email-preview');
-    }
-
     public function getTitle(): string
     {
         return __('fin-mail::fin-mail.compose.title_with_name', ['name' => $this->record->name]);
     }
 
-    protected function getHeaderActions(): array
+    private function getPreviewHtml(): string
     {
-        return [
-            Action::make('back')
-                ->label(__('fin-mail::fin-mail.template.actions.back_to_templates'))
-                ->icon(Heroicon::OutlinedArrowLeft)
-                ->url(static::getResource()::getUrl('index'))
-                ->color('gray'),
-        ];
+        $body = $this->data['body'] ?? '';
+
+        if (is_array($body)) {
+            return (new TiptapEditor)->setContent($body)->getHTML();
+        }
+
+        return $body;
     }
 
-    /**
-     * @return array<int, Action>
-     */
-    protected function getFormActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Action::make('send')
                 ->label(__('fin-mail::fin-mail.compose.actions.send'))
                 ->icon(Heroicon::OutlinedPaperAirplane)
                 ->action('send')
-                ->color('primary')
                 ->requiresConfirmation()
                 ->modalHeading(__('fin-mail::fin-mail.compose.confirm.heading'))
                 ->modalDescription(__('fin-mail::fin-mail.compose.confirm.description')),
@@ -121,7 +112,19 @@ class ComposeEmail extends Page
             Action::make('preview')
                 ->label(__('fin-mail::fin-mail.compose.actions.preview'))
                 ->icon(Heroicon::OutlinedEye)
-                ->action('preview')
+                ->modal()
+                ->modalHeading(__('fin-mail::fin-mail.template.actions.preview'))
+                ->modalContent(fn () => view('fin-mail::components.email-preview', [
+                    'html' => $this->getPreviewHtml(),
+                ]))
+                ->modalWidth(Width::FourExtraLarge)
+                ->modalSubmitAction(false)
+                ->color('gray'),
+
+            Action::make('back')
+                ->label(__('fin-mail::fin-mail.template.actions.back_to_templates'))
+                ->icon(Heroicon::OutlinedArrowLeft)
+                ->url(static::getResource()::getUrl('index'))
                 ->color('gray'),
         ];
     }

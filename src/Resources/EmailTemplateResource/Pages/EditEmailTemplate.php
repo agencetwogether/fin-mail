@@ -77,7 +77,7 @@ class EditEmailTemplate extends EditRecord
                 ->modal()
                 ->modalHeading(fn (): string => __('fin-mail::fin-mail.template.actions.preview').": {$this->record->name}")
                 ->modalContent(fn () => view('fin-mail::components.email-preview', [
-                    'html' => $this->record->body,
+                    'html' => $this->record->getTranslation('body', $this->activeLocale),
                 ]))
                 ->modalWidth(Width::FourExtraLarge)
                 ->modalSubmitAction(false),
