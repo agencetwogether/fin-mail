@@ -22,7 +22,13 @@ class EmailTemplateResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEnvelope;
 
-    protected static ?int $navigationSort = 1;
+    public static function getNavigationSort(): ?int
+    {
+        /** @var \FinityLabs\FinMail\FinMailPlugin $plugin */
+        $plugin = filament('fin-mail');
+
+        return $plugin->getEmailTemplateNavigationSort();
+    }
 
     public static function getNavigationGroup(): string|\UnitEnum|null
     {

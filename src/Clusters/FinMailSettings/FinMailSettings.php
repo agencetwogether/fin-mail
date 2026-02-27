@@ -14,11 +14,17 @@ class FinMailSettings extends Cluster
 {
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
-    protected static ?int $navigationSort = 10;
-
     protected static ?string $slug = 'mail-settings';
 
     protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Start;
+
+    public static function getNavigationSort(): ?int
+    {
+        /** @var \FinityLabs\FinMail\FinMailPlugin $plugin */
+        $plugin = filament('fin-mail');
+
+        return $plugin->getSettingsNavigationSort();
+    }
 
     public static function getNavigationGroup(): string|UnitEnum|null
     {

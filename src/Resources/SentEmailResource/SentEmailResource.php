@@ -20,7 +20,13 @@ class SentEmailResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedInboxStack;
 
-    protected static ?int $navigationSort = 3;
+    public static function getNavigationSort(): ?int
+    {
+        /** @var \FinityLabs\FinMail\FinMailPlugin $plugin */
+        $plugin = filament('fin-mail');
+
+        return $plugin->getSentEmailNavigationSort();
+    }
 
     public static function getNavigationGroup(): string|UnitEnum|null
     {

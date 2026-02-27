@@ -22,6 +22,14 @@ class FinMailPlugin implements Plugin
 
     protected bool|Closure $themesEnabled = true;
 
+    protected int|null $emailTemplateNavigationSort = 10;
+
+    protected int|null $emailThemeNavigationSort = 20;
+
+    protected int|null $sentEmailNavigationSort = 30;
+
+    protected int|null $settingsNavigationSort = 40;
+
     protected string|UnitEnum|Closure|null $emailTemplateNavigationGroup = NavigationGroup::Email;
 
     protected string|UnitEnum|Closure|null $emailThemeNavigationGroup = NavigationGroup::Email;
@@ -120,6 +128,71 @@ class FinMailPlugin implements Plugin
         $this->settingsNavigationGroup = $group;
 
         return $this;
+    }
+
+    public function navigationSort(int|null $sort): static
+    {
+        if ($sort === null) {
+            $this->emailTemplateNavigationSort = null;
+            $this->emailThemeNavigationSort = null;
+            $this->sentEmailNavigationSort = null;
+            $this->settingsNavigationSort = null;
+        } else {
+            $this->emailTemplateNavigationSort = $sort;
+            $this->emailThemeNavigationSort = $sort + 1;
+            $this->sentEmailNavigationSort = $sort + 2;
+            $this->settingsNavigationSort = $sort + 3;
+        }
+
+        return $this;
+    }
+
+    public function emailTemplateNavigationSort(int|Closure|null $sort): static
+    {
+        $this->emailTemplateNavigationSort = $sort;
+
+        return $this;
+    }
+
+    public function emailThemeNavigationSort(int|Closure|null $sort): static
+    {
+        $this->emailThemeNavigationSort = $sort;
+
+        return $this;
+    }
+
+    public function sentEmailNavigationSort(int|Closure|null $sort): static
+    {
+        $this->sentEmailNavigationSort = $sort;
+
+        return $this;
+    }
+
+    public function settingsNavigationSort(int|Closure|null $sort): static
+    {
+        $this->settingsNavigationSort = $sort;
+
+        return $this;
+    }
+
+    public function getEmailTemplateNavigationSort(): ?int
+    {
+        return $this->evaluate($this->emailTemplateNavigationSort);
+    }
+
+    public function getEmailThemeNavigationSort(): ?int
+    {
+        return $this->evaluate($this->emailThemeNavigationSort);
+    }
+
+    public function getSentEmailNavigationSort(): ?int
+    {
+        return $this->evaluate($this->sentEmailNavigationSort);
+    }
+
+    public function getSettingsNavigationSort(): ?int
+    {
+        return $this->evaluate($this->settingsNavigationSort);
     }
 
     public function getEmailTemplateNavigationGroup(): string|UnitEnum|null

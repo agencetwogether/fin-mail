@@ -22,7 +22,13 @@ class EmailThemeResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPaintBrush;
 
-    protected static ?int $navigationSort = 2;
+    public static function getNavigationSort(): ?int
+    {
+        /** @var \FinityLabs\FinMail\FinMailPlugin $plugin */
+        $plugin = filament('fin-mail');
+
+        return $plugin->getEmailThemeNavigationSort();
+    }
 
     public static function getNavigationGroup(): string|\UnitEnum|null
     {
