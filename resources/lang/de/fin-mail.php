@@ -49,6 +49,7 @@ return [
             'tags_placeholder' => 'Tags zur Organisation hinzufügen',
             'from_address' => 'Absender-E-Mail',
             'from_name' => 'Absendername',
+            'locale' => 'Sprache',
         ],
 
         'sections' => [

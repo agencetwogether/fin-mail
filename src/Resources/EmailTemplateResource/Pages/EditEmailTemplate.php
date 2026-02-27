@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace FinityLabs\FinMail\Resources\EmailTemplateResource\Pages;
 
 use Filament\Actions\Action;
-use Filament\Actions\ActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
@@ -42,6 +41,8 @@ class EditEmailTemplate extends EditRecord
      */
     protected function mutateFormDataBeforeFill(array $data): array
     {
+        $data['active_locale'] = $this->activeLocale;
+
         foreach ($this->record->translatable as $key) {
             if (isset($data[$key]) && is_array($data[$key])) {
                 $data[$key] = $data[$key][$this->activeLocale]
@@ -69,22 +70,7 @@ class EditEmailTemplate extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        $languages = app(GeneralSettings::class)->languages;
-
         return [
-            ActionGroup::make(
-                collect($languages)
-                    ->map(
-                        fn (array $lang) => Action::make("locale_{$lang['code']}")
-                            ->label($lang['display'])
-                            ->color($this->activeLocale === $lang['code'] ? 'primary' : 'gray')
-                            ->action(fn () => $this->switchLocale($lang['code']))
-                    )->values()->all()
-            )
-                ->label(fn (): string => __('fin-mail::fin-mail.template.language_label', ['locale' => strtoupper($this->activeLocale)]))
-                ->icon(Heroicon::OutlinedLanguage)
-                ->button(),
-
             Action::make('preview')
                 ->label(__('fin-mail::fin-mail.template.actions.preview'))
                 ->icon(Heroicon::OutlinedEye)

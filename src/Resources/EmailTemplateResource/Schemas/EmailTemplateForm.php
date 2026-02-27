@@ -19,6 +19,7 @@ use Filament\Support\Icons\Heroicon;
 use FinityLabs\FinMail\Contracts\EditorContract;
 use FinityLabs\FinMail\Models\EmailTemplate;
 use FinityLabs\FinMail\Settings\GeneralSettings;
+use Livewire\Component as LivewireComponent;
 
 class EmailTemplateForm
 {
@@ -42,11 +43,6 @@ class EmailTemplateForm
                                 ->visible(fn (?EmailTemplate $record): bool => (bool) $record?->is_locked)
                                 ->columnSpanFull(),
 
-                            TextInput::make('name')
-                                ->required()
-                                ->maxLength(255)
-                                ->columnSpanFull(),
-
                             Grid::make(2)->schema([
                                 TextInput::make('key')
                                     ->required()
@@ -64,6 +60,22 @@ class EmailTemplateForm
                                     ->disabled(fn (?EmailTemplate $record): bool => (bool) $record?->is_locked)
                                     ->dehydrated(true),
                             ]),
+
+                            Select::make('active_locale')
+                                ->label(__('fin-mail::fin-mail.template.fields.locale'))
+                                ->options(fn (): array => collect(app(GeneralSettings::class)->languages)->pluck('display', 'code')->all())
+                                ->default(fn (): string => app(GeneralSettings::class)->default_locale)
+                                ->native(false)
+                                ->searchable()
+                                ->live()
+                                ->afterStateUpdated(fn (LivewireComponent $livewire, ?string $state) => $state ? $livewire->switchLocale($state) : null)
+                                ->dehydrated(false)
+                                ->columnSpanFull(),
+
+                            TextInput::make('name')
+                                ->required()
+                                ->maxLength(255)
+                                ->columnSpanFull(),
 
                             TextInput::make('subject')
                                 ->required()

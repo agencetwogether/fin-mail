@@ -49,6 +49,7 @@ return [
             'tags_placeholder' => 'Add tags for organization',
             'from_address' => 'From Email',
             'from_name' => 'From Name',
+            'locale' => 'Language',
         ],
 
         'sections' => [

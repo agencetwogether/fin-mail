@@ -49,6 +49,7 @@ return [
             'tags_placeholder' => 'Címkék hozzáadása a rendszerezéshez',
             'from_address' => 'Feladó e-mail',
             'from_name' => 'Feladó neve',
+            'locale' => 'Nyelv',
         ],
 
         'sections' => [
