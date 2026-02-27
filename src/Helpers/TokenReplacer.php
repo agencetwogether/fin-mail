@@ -171,7 +171,7 @@ class TokenReplacer
             $falsyContent = $matches[3] ?? '';
 
             $value = $this->resolveToken($token, $models);
-            $isTruthy = ! empty($value) && $value !== '0' && $value !== 'false';
+            $isTruthy = ! empty($value) && $value !== 'false';
 
             return $isTruthy ? $truthyContent : $falsyContent;
         }, $content);

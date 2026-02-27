@@ -73,7 +73,7 @@ class ManageGeneralSettings extends SettingsPage
                         ->columns(2)
                         ->defaultItems(0)
                         ->collapsible()
-                        ->itemLabel(fn (array $state): ?string => $state['name'] ?? $state['address'] ?? __('fin-mail::fin-mail.settings.fields.sender_new')),
+                        ->itemLabel(fn (array $state): string => $state['name'] ?? $state['address'] ?? (string) __('fin-mail::fin-mail.settings.fields.sender_new')),
                 ]),
 
             Section::make(__('fin-mail::fin-mail.settings.sections.localization'))
@@ -105,7 +105,7 @@ class ManageGeneralSettings extends SettingsPage
                         ->columns(3)
                         ->defaultItems(1)
                         ->collapsible()
-                        ->itemLabel(fn (array $state): ?string => $state['display'] ?? $state['code'] ?? __('fin-mail::fin-mail.settings.fields.language_new')),
+                        ->itemLabel(fn (array $state): string => $state['display'] ?? $state['code'] ?? (string) __('fin-mail::fin-mail.settings.fields.language_new')),
                 ]),
 
             Section::make(__('fin-mail::fin-mail.settings.sections.categories'))
@@ -129,7 +129,7 @@ class ManageGeneralSettings extends SettingsPage
                         ->columns(2)
                         ->defaultItems(0)
                         ->collapsible()
-                        ->itemLabel(fn (array $state): ?string => $state['label'] ?? $state['key'] ?? __('fin-mail::fin-mail.settings.fields.category_new'))
+                        ->itemLabel(fn (array $state): string => $state['label'] ?? $state['key'] ?? (string) __('fin-mail::fin-mail.settings.fields.category_new'))
                         ->deleteAction(
                             fn (Action $action) => $action
                                 ->hidden(function (array $arguments, Repeater $component): bool {

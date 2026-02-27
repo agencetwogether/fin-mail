@@ -12,9 +12,9 @@ enum CleanupFrequency: int implements HasLabel
     case Weekly = 2;
     case Monthly = 3;
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
-        return __('fin-mail::fin-mail.enums.cleanup_frequency.'.$this->value);
+        return (string) __('fin-mail::fin-mail.enums.cleanup_frequency.'.$this->value);
     }
 
     public function cronMethod(): string

@@ -69,7 +69,7 @@ class SentEmailsTable
                     ->options(EmailStatus::class),
 
                 Filter::make('sent_at')
-                    ->form([
+                    ->schema([
                         DatePicker::make('from')->label(__('fin-mail::fin-mail.sent.filters.from')),
                         DatePicker::make('until')->label(__('fin-mail::fin-mail.sent.filters.until')),
                     ])

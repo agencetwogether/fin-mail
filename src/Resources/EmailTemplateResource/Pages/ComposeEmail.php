@@ -22,6 +22,8 @@ use Tiptap\Editor as TiptapEditor;
  * Full-page compose screen.
  *
  * Loaded from: /admin/email-templates/{record}/compose
+ *
+ * @property \Filament\Schemas\Schema $form
  */
 class ComposeEmail extends Page
 {

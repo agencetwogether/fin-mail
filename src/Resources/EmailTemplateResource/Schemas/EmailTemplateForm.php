@@ -158,7 +158,7 @@ class EmailTemplateForm
                                 ->columns(3)
                                 ->defaultItems(0)
                                 ->collapsible()
-                                ->itemLabel(fn (array $state): ?string => $state['token'] ?? __('fin-mail::fin-mail.template.tokens.new_item')),
+                                ->itemLabel(fn (array $state): string => $state['token'] ?? __('fin-mail::fin-mail.template.tokens.new_item')),
                         ]),
                 ])
                 ->columnSpanFull(),

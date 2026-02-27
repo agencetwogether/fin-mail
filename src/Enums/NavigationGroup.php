@@ -10,9 +10,9 @@ enum NavigationGroup: string implements HasLabel
 {
     case Email = 'email';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
-        return match ($this) {
+        return (string) match ($this) {
             self::Email => __('fin-mail::fin-mail.navigation.group'),
         };
     }

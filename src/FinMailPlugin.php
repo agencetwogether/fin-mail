@@ -26,6 +26,7 @@ class FinMailPlugin implements Plugin
 
     public static function get(): static
     {
+        /** @var static */
         return filament(app(static::class)->getId());
     }
 

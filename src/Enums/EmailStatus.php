@@ -17,12 +17,12 @@ enum EmailStatus: int implements HasColor, HasIcon, HasLabel
     case Sent = 3;
     case Failed = 4;
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
-        return __('fin-mail::fin-mail.enums.email_status.'.$this->value);
+        return (string) __('fin-mail::fin-mail.enums.email_status.'.$this->value);
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string
     {
         return match ($this) {
             self::Draft => 'gray',
@@ -32,7 +32,7 @@ enum EmailStatus: int implements HasColor, HasIcon, HasLabel
         };
     }
 
-    public function getIcon(): string|BackedEnum|null
+    public function getIcon(): BackedEnum
     {
         return match ($this) {
             self::Draft => Heroicon::OutlinedPencilSquare,

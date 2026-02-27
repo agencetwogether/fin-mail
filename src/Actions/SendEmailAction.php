@@ -53,8 +53,8 @@ class SendEmailAction extends Action
             ->modalHeading(__('fin-mail::fin-mail.send_action.modal_heading'))
             ->modalWidth(Width::FiveExtraLarge)
             ->modalSubmitActionLabel(__('fin-mail::fin-mail.send_action.submit'))
-            ->form(fn (?Model $record): array => $this->getComposeForm($record))
-            ->action(fn (array $data, ?Model $record): mixed => $this->sendEmail($data, $record))
+            ->schema(fn (?Model $record): array => $this->getComposeForm($record))
+            ->action(fn (array $data, ?Model $record) => $this->sendEmail($data, $record))
             ->modalIcon(Heroicon::OutlinedEnvelope);
     }
 

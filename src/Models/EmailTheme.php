@@ -74,6 +74,7 @@ class EmailTheme extends Model
 
     public static function getDefault(): ?static
     {
+        /** @var static|null */
         return static::where('is_default', true)->first();
     }
 

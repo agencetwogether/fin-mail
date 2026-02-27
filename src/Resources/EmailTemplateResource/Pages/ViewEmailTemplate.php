@@ -13,6 +13,9 @@ use Filament\Support\Icons\Heroicon;
 use FinityLabs\FinMail\Resources\EmailTemplateResource\EmailTemplateResource;
 use FinityLabs\FinMail\Settings\GeneralSettings;
 
+/**
+ * @property \FinityLabs\FinMail\Models\EmailTemplate $record
+ */
 class ViewEmailTemplate extends ViewRecord
 {
     protected static string $resource = EmailTemplateResource::class;

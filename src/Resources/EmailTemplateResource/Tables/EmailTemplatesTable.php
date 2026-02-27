@@ -23,6 +23,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use FinityLabs\FinMail\Mail\TemplateMail;
+use FinityLabs\FinMail\Models\EmailTemplate;
 use FinityLabs\FinMail\Resources\EmailTemplateResource\EmailTemplateResource;
 use FinityLabs\FinMail\Settings\GeneralSettings;
 use Illuminate\Support\Facades\Mail;
@@ -65,7 +66,7 @@ class EmailTemplatesTable
 
                 IconColumn::make('is_locked')
                     ->label(__('fin-mail::fin-mail.template.columns.locked'))
-                    ->icon(fn (bool $state): string|BackedEnum|null => $state ? Heroicon::LockClosed : null)
+                    ->icon(fn (bool $state): ?BackedEnum => $state ? Heroicon::LockClosed : null)
                     ->color(fn (bool $state): ?string => $state ? 'warning' : null)
                     ->tooltip(fn (bool $state): ?string => $state ? __('fin-mail::fin-mail.template.tooltips.locked') : null),
 
@@ -174,7 +175,7 @@ class EmailTemplatesTable
                         })
                         ->using(
                             fn (\Illuminate\Database\Eloquent\Collection $records) => $records
-                                ->reject(fn ($record): bool => $record->is_locked)
+                                ->reject(fn ($record): bool => (bool) $record->getAttribute('is_locked'))
                                 ->each(fn ($record) => $record->delete())
                         ),
                 ]),

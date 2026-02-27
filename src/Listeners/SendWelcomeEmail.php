@@ -13,6 +13,7 @@ class SendWelcomeEmail
 {
     public function handle(Registered $event): void
     {
+        /** @var \Illuminate\Foundation\Auth\User $user */
         $user = $event->getUser();
 
         $template = EmailTemplate::findByKey('user-welcome');
@@ -22,7 +23,7 @@ class SendWelcomeEmail
         }
 
         try {
-            Mail::to($user->email)->send(
+            Mail::to($user->getEmailForVerification())->send(
                 TemplateMail::make('user-welcome', app()->getLocale())
                     ->models(['user' => $user])
             );

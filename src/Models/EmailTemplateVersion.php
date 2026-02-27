@@ -7,6 +7,17 @@ namespace FinityLabs\FinMail\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property int $id
+ * @property int $email_template_id
+ * @property int $version
+ * @property array<string, string> $subject
+ * @property array<string, string>|null $preheader
+ * @property array<string, string> $body
+ * @property int|null $created_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ */
 class EmailTemplateVersion extends Model
 {
     protected $fillable = [

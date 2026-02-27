@@ -128,7 +128,7 @@ it('stores multiple translations in one record', function () {
         'is_active' => true,
     ]);
 
-    expect($template->getTranslatedLocales())->toContain('en', 'hu', 'de')
+    expect($template->getTranslatedLocales('name'))->toContain('en', 'hu', 'de')
         ->and($template->getTranslation('name', 'hu'))->toBe('Magyar Név')
         ->and($template->getTranslation('name', 'de'))->toBe('Deutscher Name');
 });

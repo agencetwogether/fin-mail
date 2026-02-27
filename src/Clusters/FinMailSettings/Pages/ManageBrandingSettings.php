@@ -95,7 +95,7 @@ class ManageBrandingSettings extends SettingsPage
                         ->columns(2)
                         ->defaultItems(0)
                         ->collapsible()
-                        ->itemLabel(fn (array $state): ?string => $state['name'] ?? __('fin-mail::fin-mail.settings.fields.footer_link_new')),
+                        ->itemLabel(fn (array $state): string => $state['name'] ?? (string) __('fin-mail::fin-mail.settings.fields.footer_link_new')),
                 ]),
 
             Section::make(__('fin-mail::fin-mail.settings.sections.customer_service'))

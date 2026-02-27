@@ -8,6 +8,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use FinityLabs\FinMail\Resources\EmailThemeResource\EmailThemeResource;
 
+/**
+ * @property \FinityLabs\FinMail\Models\EmailTheme $record
+ */
 class EditEmailTheme extends EditRecord
 {
     protected static string $resource = EmailThemeResource::class;

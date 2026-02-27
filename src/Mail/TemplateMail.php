@@ -41,7 +41,7 @@ class TemplateMail extends Mailable implements ShouldQueue
     /** @var array<int, array{path: string, name: ?string, mime: ?string}> */
     protected array $fileAttachments = [];
 
-    /** @var array{subject: string, preheader: string, body: string} */
+    /** @var array{subject: string, preheader: string, body: string}|array{} */
     protected array $rendered = [];
 
     protected ?SentEmail $sentEmailLog = null;
@@ -149,7 +149,7 @@ class TemplateMail extends Mailable implements ShouldQueue
             ];
 
         return new Envelope(
-            from: new Address($from['address'] ?? $mailSettings->default_from_address, $from['name'] ?? ''),
+            from: new Address($from['address'], $from['name'] ?? ''),
             subject: $this->overrideSubject ?? $rendered['subject'],
         );
     }
@@ -157,6 +157,7 @@ class TemplateMail extends Mailable implements ShouldQueue
     public function content(): Content
     {
         $rendered = $this->getRendered();
+        /** @var EmailTheme|null $theme */
         $theme = $this->emailTemplate->theme ?? EmailTheme::getDefault();
 
         return new Content(

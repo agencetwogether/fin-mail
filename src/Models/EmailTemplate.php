@@ -12,6 +12,28 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
+/**
+ * @property int $id
+ * @property string $key
+ * @property string $name
+ * @property string $category
+ * @property array<int, string>|null $tags
+ * @property string $subject
+ * @property string|null $preheader
+ * @property string $body
+ * @property string|null $view_path
+ * @property array{address?: string, name?: string}|null $from
+ * @property int|null $email_theme_id
+ * @property array<string, mixed>|null $token_schema
+ * @property bool $is_active
+ * @property bool $is_locked
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read EmailTheme|null $theme
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, EmailTemplateVersion> $versions
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, SentEmail> $sentEmails
+ */
 class EmailTemplate extends Model
 {
     use HasTranslations;
@@ -132,6 +154,7 @@ class EmailTemplate extends Model
      */
     public static function findByKey(string $key, ?string $locale = null): ?static
     {
+        /** @var static|null $template */
         $template = static::active()->byKey($key)->first();
 
         if ($template && $locale) {
@@ -174,6 +197,7 @@ class EmailTemplate extends Model
 
         $latestVersion = $this->versions()->max('version') ?? 0;
 
+        /** @var EmailTemplateVersion $version */
         $version = $this->versions()->create([
             'version' => $latestVersion + 1,
             'subject' => $this->getTranslations('subject'),
