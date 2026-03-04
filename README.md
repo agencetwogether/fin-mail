@@ -1,6 +1,6 @@
 # FinMail for Filament
 
-![finity-labs-fin-mail](https://github.com/user-attachments/assets/8f7651e6-ade0-4c25-941e-da470dc374fa)
+![finity-labs-fin-mail](https://github.com/user-attachments/assets/f1dc64c3-92ff-4628-81b7-5ff7e85f9479)
 
 [![FILAMENT 4.x](https://img.shields.io/badge/FILAMENT-4.x-EBB304?style=flat-square)](https://filamentphp.com/docs/4.x/panels/installation)
 [![FILAMENT 5.x](https://img.shields.io/badge/FILAMENT-5.x-EBB304?style=flat-square)](https://filamentphp.com/docs/5.x/panels/installation)
