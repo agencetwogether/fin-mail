@@ -1,10 +1,13 @@
 @php
     $content = $html ?? '';
 
+    // Use passed theme or fall back to defaults
+    $resolvedTheme = $theme ?? \FinityLabs\FinMail\Models\EmailTheme::defaultColors();
+
     if (is_array($content)) {
         // Tiptap JSON document (has 'type' key) — convert to HTML via Filament's renderer
         if (isset($content['type']) || (isset($content[0]['type']))) {
-            $content = \FinityLabs\FinMail\Helpers\TipTapConverter::toHtml($content);
+            $content = \FinityLabs\FinMail\Helpers\TipTapConverter::toHtml($content, $resolvedTheme);
         } else {
             // Translatable array — pick current locale
             $content = $content[app()->getLocale()] ?? reset($content) ?: '';
@@ -23,9 +26,6 @@
         'customer_service_email' => $brandingSettings->customer_service_email,
         'customer_service_phone' => $brandingSettings->customer_service_phone,
     ];
-
-    // Use passed theme or fall back to defaults
-    $resolvedTheme = $theme ?? \FinityLabs\FinMail\Models\EmailTheme::defaultColors();
 
     // Render through the full email layout
     $fullHtml = $content

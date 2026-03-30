@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace FinityLabs\FinMail\Models;
 
+use FinityLabs\FinMail\Editors\Blocks\ButtonBlock;
 use FinityLabs\FinMail\Helpers\TokenReplacer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -179,10 +180,14 @@ class EmailTemplate extends Model
 
         $replacer = app(TokenReplacer::class);
 
+        $theme = $this->theme?->resolvedColors() ?? EmailTheme::defaultColors();
+        $body = self::stripMergeTagSpans($this->body);
+        $body = self::renderCustomBlocks($body, $theme);
+
         return [
             'subject' => $replacer->replace($this->subject, $models),
             'preheader' => $replacer->replace($this->preheader ?? '', $models),
-            'body' => $replacer->replace(self::stripMergeTagSpans($this->body), $models),
+            'body' => $replacer->replace($body, $models),
         ];
     }
 
@@ -207,6 +212,44 @@ class EmailTemplate extends Model
                 }
 
                 return '';
+            },
+            $html,
+        ) ?? $html;
+    }
+
+    /**
+     * Replace custom block divs in stored HTML with their rendered output.
+     *
+     * @param  array<string, string>  $theme
+     */
+    protected static function renderCustomBlocks(string $html, array $theme): string
+    {
+        $blocks = [
+            'emailButton' => ButtonBlock::class,
+        ];
+
+        return preg_replace_callback(
+            '/<div\s[^>]*data-type="customBlock"[^>]*>.*?<\/div>/s',
+            function (array $matches) use ($blocks, $theme): string {
+                $tag = $matches[0];
+
+                if (! preg_match('/data-id="([^"]+)"/', $tag, $idMatch)) {
+                    return '';
+                }
+
+                $blockId = $idMatch[1];
+                $blockClass = $blocks[$blockId] ?? null;
+
+                if (! $blockClass) {
+                    return '';
+                }
+
+                $config = [];
+                if (preg_match('/data-config="([^"]*)"/', $tag, $configMatch)) {
+                    $config = json_decode(html_entity_decode($configMatch[1]), true) ?? [];
+                }
+
+                return $blockClass::toHtml($config, ['theme' => $theme]) ?? '';
             },
             $html,
         ) ?? $html;

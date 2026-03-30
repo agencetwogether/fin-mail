@@ -78,6 +78,17 @@ return [
             'new_item' => 'New Token',
         ],
 
+        'blocks' => [
+            'button' => 'Button',
+            'button_heading' => 'Insert Button',
+            'button_label' => 'Button Text',
+            'button_url' => 'URL',
+            'button_align' => 'Alignment',
+            'align_left' => 'Left',
+            'align_center' => 'Center',
+            'align_right' => 'Right',
+        ],
+
         'columns' => [
             'locales' => 'Locales',
             'active' => 'Active',

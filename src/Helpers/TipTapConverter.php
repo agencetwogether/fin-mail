@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace FinityLabs\FinMail\Helpers;
 
 use Filament\Forms\Components\RichEditor\RichContentRenderer;
+use FinityLabs\FinMail\Editors\Blocks\ButtonBlock;
 
 class TipTapConverter
 {
@@ -13,8 +14,9 @@ class TipTapConverter
      * as {{ token }} text so the token replacer can process them later.
      *
      * @param  array<string, mixed>  $content
+     * @param  array<string, string>|null  $theme  Theme colors for custom blocks
      */
-    public static function toHtml(array $content): string
+    public static function toHtml(array $content, ?array $theme = null): string
     {
         $document = isset($content['type']) ? $content : ['type' => 'doc', 'content' => $content];
 
@@ -23,7 +25,11 @@ class TipTapConverter
         // replaces the mergeTag nodes with plain token text.
         $mergeTags = static::extractMergeTagIds($document);
 
-        $renderer = RichContentRenderer::make()->content($document);
+        $renderer = RichContentRenderer::make()
+            ->content($document)
+            ->customBlocks([
+                ButtonBlock::class => ['theme' => $theme],
+            ]);
 
         if (! empty($mergeTags)) {
             $renderer->mergeTags($mergeTags);
