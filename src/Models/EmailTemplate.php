@@ -112,7 +112,7 @@ class EmailTemplate extends Model
 
     public function versions(): HasMany
     {
-        return $this->hasMany(EmailTemplateVersion::class)->orderByDesc('version');
+        return $this->hasMany(EmailTemplateVersion::class)->with('createdBy:id,name')->orderByDesc('version');
     }
 
     /*

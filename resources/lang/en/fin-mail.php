@@ -122,6 +122,15 @@ return [
             'locked' => 'This template is locked — key and category are read-only, deletion is prevented.',
         ],
 
+        'versioning' => [
+            'date' => 'Date',
+            'by' => 'By',
+            'restore' => 'Restore',
+            'restore_confirm' => 'Are you sure you want to restore version :version? The current content will be saved as a new version first.',
+            'restored' => 'Version :version restored.',
+            'empty' => 'No version history available.',
+        ],
+
         'notices' => [
             'locked' => 'This template is locked. The key and category fields cannot be changed.',
         ],

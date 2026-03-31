@@ -6,6 +6,9 @@ namespace FinityLabs\FinMail\Resources\EmailTemplateResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
+use Filament\Infolists\Components\RepeatableEntry;
+use Filament\Infolists\Components\RepeatableEntry\TableColumn;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Support\Enums\Width;
@@ -13,6 +16,7 @@ use Filament\Support\Icons\Heroicon;
 use FinityLabs\FinMail\Editors\Blocks\ButtonBlock;
 use FinityLabs\FinMail\FinMailPlugin;
 use FinityLabs\FinMail\Models\EmailTemplate;
+use FinityLabs\FinMail\Models\EmailTemplateVersion;
 use FinityLabs\FinMail\Models\EmailTheme;
 use FinityLabs\FinMail\Resources\EmailTemplateResource\EmailTemplateResource;
 use FinityLabs\FinMail\Settings\GeneralSettings;
@@ -25,6 +29,8 @@ class EditEmailTemplate extends EditRecord
     protected static string $resource = EmailTemplateResource::class;
 
     public string $activeLocale = '';
+
+    public ?int $previewVersionNumber = null;
 
     public function mount(int|string $record): void
     {
@@ -109,12 +115,87 @@ class EditEmailTemplate extends EditRecord
                 ->icon(Heroicon::OutlinedClock)
                 ->modal()
                 ->modalHeading(__('fin-mail::fin-mail.template.actions.version_history'))
-                ->modalContent(fn () => view('fin-mail::components.version-history', [
-                    'versions' => $this->record->versions()->with('createdBy')->latest('version')->limit(20)->get(),
-                ]))
+                ->schema([
+                    RepeatableEntry::make('versions')
+                        ->label('')
+                        ->table([
+                            TableColumn::make('#')->width('120px'),
+                            TableColumn::make(__('fin-mail::fin-mail.template.versioning.date')),
+                            TableColumn::make(__('fin-mail::fin-mail.template.versioning.by')),
+                        ])
+                        ->schema([
+                            TextEntry::make('version')
+                                ->prefixAction(function(EmailTemplateVersion $record) {
+                                    return
+                                        Action::make('preview')
+                                            ->icon(Heroicon::OutlinedEye)
+                                            ->iconButton()
+                                            ->modal()
+                                            ->modalHeading(__('fin-mail::fin-mail.template.actions.preview').' — v'.$record->version)
+                                            ->modalContent(function () use ($record) {
+                                                $locale = $this->activeLocale;
+
+                                                return view('fin-mail::components.email-preview', [
+                                                    'subject' => $record->subject[$locale] ?? collect($record->subject)->first() ?? '',
+                                                    'preheader' => $record->preheader[$locale] ?? collect($record->preheader)->first() ?? '',
+                                                    'html' => $record->body[$locale] ?? collect($record->body)->first() ?? '',
+                                                    'theme' => $this->record->theme?->resolvedColors(),
+                                                ]);
+                                            })
+                                            ->modalWidth(Width::FourExtraLarge)
+                                            ->modalSubmitAction(false);
+                                })
+                                ->prefixAction(function (EmailTemplateVersion $record) {
+                                    return
+                                        Action::make('restore')
+                                            ->icon(Heroicon::OutlinedArrowUturnLeft)
+                                            ->iconButton()
+                                            ->requiresConfirmation()
+                                            ->modalHeading(__('fin-mail::fin-mail.template.versioning.restore'))
+                                            ->modalDescription(__('fin-mail::fin-mail.template.versioning.restore_confirm', ['version' => $record->version]))
+                                            ->action(function () use ($record) {
+                                                $this->record->saveVersion(auth()->id());
+                                                $this->record->restoreVersion($record->version);
+                                                $this->fillForm();
+
+                                                Notification::make()
+                                                    ->title(__('fin-mail::fin-mail.template.versioning.restored', ['version' => $record->version]))
+                                                    ->success()
+                                                    ->send();
+                                            });
+                                }),
+                            TextEntry::make('created_at')
+                                ->dateTime(),
+                            TextEntry::make('createdBy.name')
+                                ->placeholder('-'),
+                        ]),
+                ])
                 ->modalWidth(Width::ThreeExtraLarge)
                 ->modalSubmitAction(false)
                 ->visible(fn (): bool => (bool) config('fin-mail.versioning.enabled')),
+
+            Action::make('preview_version')
+                ->hidden()
+                ->modal()
+                ->modalHeading(fn (): string => __('fin-mail::fin-mail.template.actions.preview').' — v'.$this->previewVersionNumber)
+                ->modalContent(function () {
+                    $version = $this->record->versions()->where('version', $this->previewVersionNumber)->first();
+
+                    if (! $version) {
+                        return '';
+                    }
+
+                    $locale = $this->activeLocale;
+
+                    return view('fin-mail::components.email-preview', [
+                        'subject' => $version->subject[$locale] ?? collect($version->subject)->first() ?? '',
+                        'preheader' => $version->preheader[$locale] ?? collect($version->preheader)->first() ?? '',
+                        'html' => $version->body[$locale] ?? collect($version->body)->first() ?? '',
+                        'theme' => $this->record->theme?->resolvedColors(),
+                    ]);
+                })
+                ->modalWidth(Width::FourExtraLarge)
+                ->modalSubmitAction(false),
 
             DeleteAction::make()
                 ->visible(function (): bool {
@@ -152,5 +233,23 @@ class EditEmailTemplate extends EditRecord
         }
 
         return $notification->success();
+    }
+
+    public function previewVersion(int $versionNumber): void
+    {
+        $this->previewVersionNumber = $versionNumber;
+        $this->mountAction('preview_version');
+    }
+
+    public function restoreVersion(int $versionNumber): void
+    {
+        $this->record->saveVersion(auth()->id());
+        $this->record->restoreVersion($versionNumber);
+        $this->fillForm();
+
+        Notification::make()
+            ->title(__('fin-mail::fin-mail.template.versioning.restored', ['version' => $versionNumber]))
+            ->success()
+            ->send();
     }
 }
