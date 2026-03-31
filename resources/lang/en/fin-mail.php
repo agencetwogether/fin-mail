@@ -125,6 +125,7 @@ return [
         'versioning' => [
             'date' => 'Date',
             'by' => 'By',
+            'preview' => 'Preview',
             'restore' => 'Restore',
             'restore_confirm' => 'Are you sure you want to restore version :version? The current content will be saved as a new version first.',
             'restored' => 'Version :version restored.',
@@ -313,6 +314,18 @@ return [
             'resend_description' => 'This will send a new copy of the email to the original recipients.',
         ],
 
+        'preview' => [
+            'from' => 'From:',
+            'to' => 'To:',
+            'cc' => 'CC:',
+            'template' => 'Template:',
+            'sent' => 'Sent:',
+            'sent_not_yet' => 'Not yet',
+            'status' => 'Status:',
+            'no_body' => 'Email body was not stored. Enable <code>logging.store_rendered_body</code> in settings to save email content.',
+            'error' => 'Error Details'
+        ],
+
         'notifications' => [
             'resent' => 'Email resent successfully',
             'resend_failed' => 'Failed to resend email',
@@ -394,12 +407,14 @@ return [
             'default_sender' => 'Default Sender',
             'default_sender_description' => 'The default "From" address for all emails sent by the plugin.',
             'additional_senders' => 'Additional Senders',
+            'add_additional_senders' => 'Add Additional Senders',
             'additional_senders_description' => 'Extra "From" addresses users can choose when composing emails.',
             'localization' => 'Localization',
             'categories' => 'Template Categories',
             'logo' => 'Logo',
             'colors' => 'Colors',
             'footer_links' => 'Footer Links',
+            'add_footer_links' => 'Add Footer Links',
             'customer_service' => 'Customer Service',
             'logging' => 'Email Logging',
             'logging_description' => 'Control how sent emails are recorded in the database.',

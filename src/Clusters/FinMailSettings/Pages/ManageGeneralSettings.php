@@ -61,7 +61,7 @@ class ManageGeneralSettings extends SettingsPage
                 ->description(__('fin-mail::fin-mail.settings.sections.additional_senders_description'))
                 ->schema([
                     Repeater::make('additional_senders')
-                        ->label('')
+                        ->hiddenLabel()
                         ->schema([
                             TextInput::make('address')
                                 ->label(__('fin-mail::fin-mail.settings.fields.sender_email'))
@@ -76,6 +76,7 @@ class ManageGeneralSettings extends SettingsPage
                         ->columns(2)
                         ->defaultItems(0)
                         ->collapsible()
+                        ->addActionLabel(__('fin-mail::fin-mail.settings.sections.add_additional_senders'))
                         ->itemLabel(fn (array $state): string => $state['name'] ?? $state['address'] ?? (string) __('fin-mail::fin-mail.settings.fields.sender_new')),
                 ]),
 

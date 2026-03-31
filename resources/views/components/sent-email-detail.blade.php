@@ -7,7 +7,7 @@
         </div>
         <div>
             <span class="font-medium text-gray-500 dark:text-gray-400">Sent:</span>
-            <span class="ml-2">{{ $email->sent_at?->format('M d, Y H:i') ?? 'Not yet' }}</span>
+            <span class="ml-2">{{ $email->sent_at?->isoFormat('llll') ?? 'Not yet' }}</span>
         </div>
         <div>
             <span class="font-medium text-gray-500 dark:text-gray-400">To:</span>

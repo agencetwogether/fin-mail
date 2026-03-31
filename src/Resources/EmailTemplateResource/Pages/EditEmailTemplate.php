@@ -128,6 +128,7 @@ class EditEmailTemplate extends EditRecord
                                 ->prefixAction(function (EmailTemplateVersion $record) {
                                     return
                                         Action::make('preview')
+                                            ->label(__('fin-mail::fin-mail.template.versioning.preview'))
                                             ->icon(Heroicon::OutlinedEye)
                                             ->iconButton()
                                             ->modal()
@@ -143,11 +144,13 @@ class EditEmailTemplate extends EditRecord
                                                 ]);
                                             })
                                             ->modalWidth(Width::FourExtraLarge)
-                                            ->modalSubmitAction(false);
+                                            ->modalSubmitAction(false)
+                                            ->overlayParentActions();
                                 })
                                 ->prefixAction(function (EmailTemplateVersion $record) {
                                     return
                                         Action::make('restore')
+                                            ->label(__('fin-mail::fin-mail.template.versioning.restore'))
                                             ->icon(Heroicon::OutlinedArrowUturnLeft)
                                             ->iconButton()
                                             ->requiresConfirmation()
@@ -165,7 +168,7 @@ class EditEmailTemplate extends EditRecord
                                             });
                                 }),
                             TextEntry::make('created_at')
-                                ->dateTime(),
+                                ->isoDateTime(),
                             TextEntry::make('createdBy.name')
                                 ->placeholder('-'),
                         ]),
