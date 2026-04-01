@@ -7,7 +7,14 @@
         </div>
         <div>
             <span class="font-medium text-gray-500 dark:text-gray-400">{{ __('fin-mail::fin-mail.sent.preview.sent') }}</span>
-            <span class="ml-2">{{ $email->sent_at?->isoFormat('llll') ?? __('fin-mail::fin-mail.sent.preview.sent_not_yet') }}</span>
+            @php
+                $sentAtFormatted = null;
+                if ($email->sent_at) {
+                    $fmt = app('fin-mail')->dateTimeFormat();
+                    $sentAtFormatted = $fmt ? $email->sent_at->format($fmt) : (string) $email->sent_at;
+                }
+            @endphp
+            <span class="ml-2">{{ $sentAtFormatted ?? __('fin-mail::fin-mail.sent.preview.sent_not_yet') }}</span>
         </div>
         <div>
             <span class="font-medium text-gray-500 dark:text-gray-400">{{ __('fin-mail::fin-mail.sent.preview.to') }}</span>

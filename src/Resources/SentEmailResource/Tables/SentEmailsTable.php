@@ -58,7 +58,7 @@ class SentEmailsTable
 
                 TextColumn::make('sent_at')
                     ->label(__('fin-mail::fin-mail.sent.columns.sent_at'))
-                    ->isoDateTime()
+                    ->dateTime(app('fin-mail')->dateTimeFormat())
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')

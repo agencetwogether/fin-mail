@@ -24,7 +24,7 @@
                             </td>
                             <td class="fi-ta-cell px-3 py-4">
                                 <span class="text-sm text-gray-500 dark:text-gray-400">
-                                    {{ $version->created_at->format('M d, Y H:i') }}
+                                    {{ ($fmt = app('fin-mail')->dateTimeFormat()) ? $version->created_at->format($fmt) : $version->created_at }}
                                 </span>
                             </td>
                             <td class="fi-ta-cell px-3 py-4">

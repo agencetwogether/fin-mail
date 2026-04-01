@@ -195,7 +195,9 @@ class TokenReplacer
         }
 
         if ($value instanceof \DateTimeInterface) {
-            return $value->format('M d, Y');
+            $format = app('fin-mail')->dateFormat();
+
+            return $format ? $value->format($format) : $value->format('Y-m-d');
         }
 
         if ($value instanceof BackedEnum) {

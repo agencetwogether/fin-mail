@@ -71,7 +71,7 @@ class SentEmailsRelationManager extends RelationManager
 
                 TextColumn::make('sent_at')
                     ->label(__('fin-mail::fin-mail.relation.columns.sent_at'))
-                    ->dateTime('M d, Y H:i')
+                    ->dateTime(app('fin-mail')->dateTimeFormat())
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')

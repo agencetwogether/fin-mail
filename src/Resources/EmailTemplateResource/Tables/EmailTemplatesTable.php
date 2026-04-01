@@ -79,7 +79,7 @@ class EmailTemplatesTable
 
                 TextColumn::make('updated_at')
                     ->label(__('fin-mail::fin-mail.template.columns.updated_at'))
-                    ->isoDateTime()
+                    ->dateTime(app('fin-mail')->dateTimeFormat())
                     ->sortable()
                     ->toggleable(),
             ])

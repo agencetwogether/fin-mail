@@ -342,6 +342,39 @@ Publish the config:
 php artisan vendor:publish --tag=fin-mail-config
 ```
 
+### Date formatting
+
+By default, dates and datetimes throughout the plugin use Filament's built-in formatting. You can override this globally or per locale in `config/fin-mail.php`:
+
+```php
+// A single format for all locales
+'date_format' => 'd/m/Y',
+'datetime_format' => 'd/m/Y H:i',
+
+// Or an array keyed by locale
+'date_format' => [
+    'en' => 'M d, Y',
+    'de' => 'd.m.Y',
+    'hu' => 'Y. m. d.',
+],
+'datetime_format' => [
+    'en' => 'M d, Y H:i',
+    'de' => 'd.m.Y H:i',
+    'hu' => 'Y. m. d. H:i',
+],
+```
+
+When set to `null` (or when the current locale isn't in the array), Filament's default formatting kicks in. These formats are standard PHP [date format characters](https://www.php.net/manual/en/datetime.format.php).
+
+You can also access the resolved format programmatically:
+
+```php
+use FinityLabs\FinMail\Facades\FinMail;
+
+FinMail::dateFormat();     // string|null for current locale
+FinMail::dateTimeFormat(); // string|null for current locale
+```
+
 Other publish tags:
 
 | Tag | Description |

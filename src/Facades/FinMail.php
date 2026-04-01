@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static \FinityLabs\FinMail\Models\EmailTemplate|null findTemplate(string $key, ?string $locale = null)
  * @method static string replace(string $content, array $models = [])
  * @method static array templateKeys(?string $locale = null)
+ * @method static string|null dateFormat()
+ * @method static string|null dateTimeFormat()
  *
  * @see FinMailManager
  */

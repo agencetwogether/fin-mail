@@ -117,7 +117,7 @@ class EditEmailTemplate extends EditRecord
                 ->modalHeading(__('fin-mail::fin-mail.template.actions.version_history'))
                 ->schema([
                     RepeatableEntry::make('versions')
-                        ->label('')
+                        ->hiddenLabel()
                         ->table([
                             TableColumn::make('#')->width('120px'),
                             TableColumn::make(__('fin-mail::fin-mail.template.versioning.date')),
@@ -168,7 +168,7 @@ class EditEmailTemplate extends EditRecord
                                             });
                                 }),
                             TextEntry::make('created_at')
-                                ->isoDateTime(),
+                                ->dateTime(app('fin-mail')->dateTimeFormat()),
                             TextEntry::make('createdBy.name')
                                 ->placeholder('-'),
                         ]),

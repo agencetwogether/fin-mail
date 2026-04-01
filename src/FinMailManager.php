@@ -42,4 +42,25 @@ class FinMailManager
             ->pluck('key')
             ->all();
     }
+
+    public function dateFormat(): ?string
+    {
+        return $this->resolveFormat('fin-mail.date_format');
+    }
+
+    public function dateTimeFormat(): ?string
+    {
+        return $this->resolveFormat('fin-mail.datetime_format');
+    }
+
+    protected function resolveFormat(string $key): ?string
+    {
+        $value = config($key);
+
+        if (is_array($value)) {
+            return $value[app()->getLocale()] ?? null;
+        }
+
+        return $value;
+    }
 }
