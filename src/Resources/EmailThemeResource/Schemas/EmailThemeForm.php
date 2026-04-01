@@ -125,7 +125,7 @@ class EmailThemeForm
                 Section::make(__('fin-mail::fin-mail.theme.sections.preview'))
                     ->schema([
                         TextEntry::make('preview')
-                            ->label('')
+                            ->hiddenLabel()
                             ->state(fn (callable $get) => view('fin-mail::components.theme-preview', [
                                 'theme' => array_merge($defaultColors, array_filter($get('colors') ?? [])),
                             ]))

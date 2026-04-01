@@ -51,7 +51,7 @@ class EmailThemesTable
 
                 TextColumn::make('updated_at')
                     ->label(__('fin-mail::fin-mail.theme.columns.updated_at'))
-                    ->dateTime()
+                    ->isoDateTime()
                     ->sortable()
                     ->toggleable(),
             ])

@@ -83,7 +83,7 @@ class ManageBrandingSettings extends SettingsPage
             Section::make(__('fin-mail::fin-mail.settings.sections.footer_links'))
                 ->schema([
                     Repeater::make('footer_links')
-                        ->label('')
+                        ->hiddenLabel()
                         ->schema([
                             TextInput::make('name')
                                 ->label(__('fin-mail::fin-mail.settings.fields.footer_link_label'))
@@ -98,6 +98,7 @@ class ManageBrandingSettings extends SettingsPage
                         ->columns(2)
                         ->defaultItems(0)
                         ->collapsible()
+                        ->addActionLabel(__('fin-mail::fin-mail.settings.sections.add_footer_links'))
                         ->itemLabel(fn (array $state): string => $state['name'] ?? (string) __('fin-mail::fin-mail.settings.fields.footer_link_new')),
                 ]),
 

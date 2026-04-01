@@ -88,7 +88,8 @@ class ManageLoggingSettings extends SettingsPage
                                 ->numeric()
                                 ->nullable()
                                 ->minValue(1)
-                                ->maxValue(3650),
+                                ->maxValue(3650)
+                                ->columnSpanFull(),
                             Text::make(__('fin-mail::fin-mail.settings.fields.retention_days_helper'))
                                 ->columnSpanFull(),
                         ]),
@@ -109,7 +110,8 @@ class ManageLoggingSettings extends SettingsPage
                                 ->options(CleanupFrequency::class)
                                 ->native(false)
                                 ->required()
-                                ->visible(fn (callable $get): bool => (bool) $get('cleanup_enabled')),
+                                ->visible(fn (callable $get): bool => (bool) $get('cleanup_enabled'))
+                                ->columnSpanFull(),
                         ]),
                 ]),
         ]);

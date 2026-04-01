@@ -125,6 +125,7 @@ return [
         'versioning' => [
             'date' => 'Date',
             'by' => 'Par',
+            'preview' => 'Prévisualiser',
             'restore' => 'Restaurer',
             'restore_confirm' => 'Êtes-vous sûr de vouloir restaurer la version :version ? Le contenu actuel sera d\'abord enregistré comme nouvelle version.',
             'restored' => 'Version :version restaurée.',
@@ -313,6 +314,18 @@ return [
             'resend_description' => 'Cela enverra une nouvelle copie de l\'email aux destinataires originaux.',
         ],
 
+        'preview' => [
+            'from' => 'De :',
+            'to' => 'A :',
+            'cc' => 'Copie :',
+            'template' => 'Modèle :',
+            'sent' => 'Envoyé :',
+            'sent_not_yet' => 'Pas encore',
+            'status' => 'Statut :',
+            'no_body' => 'Le corps de l\'e-mail n\'a pas été enregistré. Activez l\'option <code>logging.store_rendered_body</code> dans les paramètres pour enregistrer le contenu de l\'e-mail.',
+            'error' => 'Détails de l\'erreur'
+        ],
+
         'notifications' => [
             'resent' => 'Email renvoyé avec succès',
             'resend_failed' => 'Échec du renvoi de l\'email',
@@ -394,12 +407,14 @@ return [
             'default_sender' => 'Expéditeur par défaut',
             'default_sender_description' => 'L\'adresse d\'expéditeur par défaut pour tous les emails envoyés par le plugin.',
             'additional_senders' => 'Expéditeurs supplémentaires',
+            'add_additional_senders' => 'Ajouter un expéditeur supplémentaire',
             'additional_senders_description' => 'Adresses d\'expéditeur supplémentaires que les utilisateurs peuvent choisir lors de la rédaction d\'emails.',
             'localization' => 'Localisation',
             'categories' => 'Catégories de modèles',
             'logo' => 'Logo',
             'colors' => 'Couleurs',
             'footer_links' => 'Liens du pied de page',
+            'add_footer_links' => 'Ajouter un lien au pied de page',
             'customer_service' => 'Service client',
             'logging' => 'Journalisation des emails',
             'logging_description' => 'Contrôlez comment les emails envoyés sont enregistrés dans la base de données.',
