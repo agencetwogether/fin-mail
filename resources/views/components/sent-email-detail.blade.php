@@ -1,6 +1,10 @@
 <div class="space-y-4">
     {{-- Metadata --}}
     <div class="grid grid-cols-2 gap-4 text-sm">
+        <div class="col-span-2">
+            <span class="font-medium text-gray-500 dark:text-gray-400">{{ __('fin-mail::fin-mail.sent.columns.subject') }}:</span>
+            <span class="ml-2">{{ $email->subject }}</span>
+        </div>
         <div>
             <span class="font-medium text-gray-500 dark:text-gray-400">{{ __('fin-mail::fin-mail.sent.preview.from') }}</span>
             <span class="ml-2">{{ $email->sender }}</span>

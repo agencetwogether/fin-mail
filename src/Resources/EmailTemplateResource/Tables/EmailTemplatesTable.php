@@ -16,6 +16,7 @@ use Filament\Actions\ViewAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Section;
 use Filament\Support\Enums\Width;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
@@ -24,6 +25,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use FinityLabs\FinMail\Actions\EmailSender;
+use FinityLabs\FinMail\Helpers\TokenValue;
 use FinityLabs\FinMail\Resources\EmailTemplateResource\EmailTemplateResource;
 use FinityLabs\FinMail\Settings\GeneralSettings;
 use Illuminate\Database\Eloquent\Collection;
@@ -152,23 +154,57 @@ class EmailTemplatesTable
                         ->label(__('fin-mail::fin-mail.template.actions.send_test'))
                         ->icon(Heroicon::OutlinedPaperAirplane)
                         ->modal()
-                        ->schema([
-                            TextInput::make('test_email')
-                                ->label(__('fin-mail::fin-mail.template.actions.send_test_field'))
-                                ->email()
-                                ->required()
-                                ->default(fn (): ?string => auth()->user()?->email),
+                        ->schema(function ($record): array {
+                            $fields = [
+                                TextInput::make('test_email')
+                                    ->label(__('fin-mail::fin-mail.template.actions.send_test_field'))
+                                    ->email()
+                                    ->required()
+                                    ->default(fn (): ?string => auth()->user()?->email),
 
-                            Select::make('locale')
-                                ->label(__('fin-mail::fin-mail.template.actions.send_test_locale'))
-                                ->options(fn (): array => collect(app(GeneralSettings::class)->languages)->pluck('display', 'code')->all())
-                                ->default(fn (): string => app()->getLocale())
-                                ->native(false)
-                                ->required(),
-                        ])
+                                Select::make('locale')
+                                    ->label(__('fin-mail::fin-mail.template.actions.send_test_locale'))
+                                    ->options(fn (): array => collect(app(GeneralSettings::class)->languages)->pluck('display', 'code')->all())
+                                    ->default(fn (): string => app()->getLocale())
+                                    ->native(false)
+                                    ->required(),
+                            ];
+
+                            $tokenFields = static::buildTokenFields($record->token_schema ?? []);
+
+                            if (! empty($tokenFields)) {
+                                $fields[] = Section::make(__('fin-mail::fin-mail.template.tokens.label'))
+                                    ->schema($tokenFields)
+                                    ->collapsed(false);
+                            }
+
+                            return $fields;
+                        })
                         ->action(function ($record, array $data): void {
                             try {
-                                $rendered = $record->render(['user' => auth()->user()], $data['locale']);
+                                $models = ['user' => auth()->user()];
+
+                                foreach (static::getTestableTokens($record->token_schema ?? []) as $token) {
+                                    $key = $token['token'];
+                                    $fieldKey = 'token_'.str_replace('.', '_', $key);
+                                    $value = $data[$fieldKey] ?? '';
+
+                                    if ($value === '') {
+                                        continue;
+                                    }
+
+                                    if (str_contains($key, '.')) {
+                                        [$prefix, $attr] = explode('.', $key, 2);
+                                        if (! isset($models[$prefix])) {
+                                            $models[$prefix] = new \stdClass;
+                                        }
+                                        $models[$prefix]->{$attr} = $value;
+                                    } else {
+                                        $models[$key] = new TokenValue($value);
+                                    }
+                                }
+
+                                $rendered = $record->render($models, $data['locale']);
 
                                 $sender = new EmailSender(
                                     data: [
@@ -181,7 +217,7 @@ class EmailTemplatesTable
                                         'body' => $rendered['body'],
                                     ],
                                     templateKey: $record->key,
-                                    modelsResolver: ['user' => auth()->user()],
+                                    modelsResolver: $models,
                                 );
 
                                 $sender->send();
@@ -221,5 +257,52 @@ class EmailTemplatesTable
                 ]),
             ])
             ->defaultSort('updated_at', 'desc');
+    }
+
+    /**
+     * Build form fields for tokens that can be filled manually in test sends.
+     * Skips config.* tokens and user.* tokens (auto-provided).
+     *
+     * @param  array<int, array{token: string, description?: string, example?: string}>  $tokenSchema
+     *
+     * @return array<int, TextInput>
+     */
+    protected static function buildTokenFields(array $tokenSchema): array
+    {
+        return collect(static::getTestableTokens($tokenSchema))
+            ->map(
+                fn (array $token): TextInput => TextInput::make('token_'.str_replace('.', '_', $token['token']))
+                    ->label('{{ '.$token['token'].' }}')
+                    ->helperText($token['description'] ?? null)
+                    ->default($token['example'] ?? null)
+            )
+            ->all();
+    }
+
+    /**
+     * Filter token schema to only tokens that need manual input.
+     *
+     * @param  array<int, array{token: string, description?: string, example?: string}>  $tokenSchema
+     *
+     * @return array<int, array{token: string, description?: string, example?: string}>
+     */
+    protected static function getTestableTokens(array $tokenSchema): array
+    {
+        return collect($tokenSchema)
+            ->filter(function (array $token): bool {
+                $key = $token['token'];
+
+                if (str_starts_with($key, 'config.')) {
+                    return false;
+                }
+
+                if (str_starts_with($key, 'user.')) {
+                    return false;
+                }
+
+                return $key !== '';
+            })
+            ->values()
+            ->all();
     }
 }
