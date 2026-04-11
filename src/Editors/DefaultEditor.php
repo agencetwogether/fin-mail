@@ -7,7 +7,7 @@ namespace FinityLabs\FinMail\Editors;
 use Filament\Forms\Components\RichEditor;
 use Filament\Schemas\Components\Component;
 use FinityLabs\FinMail\Contracts\EditorContract;
-use FinityLabs\FinMail\Editors\Blocks\ButtonBlock;
+use FinityLabs\FinMail\FinMailPlugin;
 
 class DefaultEditor implements EditorContract
 {
@@ -22,9 +22,7 @@ class DefaultEditor implements EditorContract
                 'codeBlock', 'customBlocks', 'mergeTags',
                 'redo', 'undo',
             ])
-            ->customBlocks([
-                ButtonBlock::class,
-            ])
+            ->customBlocks(FinMailPlugin::getCustomBlockClasses())
             ->columnSpanFull();
     }
 

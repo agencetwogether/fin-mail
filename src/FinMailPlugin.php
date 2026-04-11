@@ -8,6 +8,7 @@ use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
+use FinityLabs\FinMail\Editors\Blocks\ButtonBlock;
 use FinityLabs\FinMail\Enums\NavigationGroup;
 use FinityLabs\FinMail\Resources\EmailTemplateResource\EmailTemplateResource;
 use FinityLabs\FinMail\Resources\EmailThemeResource\EmailThemeResource;
@@ -17,6 +18,14 @@ use UnitEnum;
 class FinMailPlugin implements Plugin
 {
     use EvaluatesClosures;
+
+    /**
+     * Custom blocks registered for the email editor.
+     * Keyed by block ID, values are block class names.
+     *
+     * @var array<string, class-string>
+     */
+    protected static array $customBlocks = [];
 
     protected bool|Closure $deleteActionOnEditPage = false;
 
@@ -241,5 +250,44 @@ class FinMailPlugin implements Plugin
     public function getSettingsNavigationGroup(): string|UnitEnum|null
     {
         return $this->evaluate($this->settingsNavigationGroup);
+    }
+
+    /**
+     * Register custom blocks for the email editor.
+     * Each block must extend RichContentCustomBlock.
+     *
+     * @param  array<class-string>  $blocks
+     */
+    public function customBlocks(array $blocks): static
+    {
+        foreach ($blocks as $blockClass) {
+            static::$customBlocks[$blockClass::getId()] = $blockClass;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get all registered custom blocks keyed by their ID.
+     * Always includes ButtonBlock as the default.
+     *
+     * @return array<string, class-string>
+     */
+    public static function getCustomBlocks(): array
+    {
+        return array_merge(
+            [ButtonBlock::getId() => ButtonBlock::class],
+            static::$customBlocks,
+        );
+    }
+
+    /**
+     * Get registered block classes as a flat array (for editor customBlocks()).
+     *
+     * @return array<class-string>
+     */
+    public static function getCustomBlockClasses(): array
+    {
+        return array_values(static::getCustomBlocks());
     }
 }

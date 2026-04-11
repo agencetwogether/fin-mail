@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace FinityLabs\FinMail\Models;
 
-use FinityLabs\FinMail\Editors\Blocks\ButtonBlock;
+use FinityLabs\FinMail\FinMailPlugin;
 use FinityLabs\FinMail\Helpers\TokenReplacer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -226,9 +226,7 @@ class EmailTemplate extends Model
      */
     public static function renderCustomBlocks(string $html, array $theme): string
     {
-        $blocks = [
-            'emailButton' => ButtonBlock::class,
-        ];
+        $blocks = FinMailPlugin::getCustomBlocks();
 
         return preg_replace_callback(
             '/<div\s[^>]*data-type="customBlock"[^>]*>.*?<\/div>/s',

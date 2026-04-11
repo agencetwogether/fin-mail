@@ -18,7 +18,7 @@ use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use FinityLabs\FinMail\Contracts\EditorContract;
-use FinityLabs\FinMail\Editors\Blocks\ButtonBlock;
+use FinityLabs\FinMail\FinMailPlugin;
 use FinityLabs\FinMail\Models\EmailTemplate;
 use FinityLabs\FinMail\Models\EmailTheme;
 use FinityLabs\FinMail\Settings\GeneralSettings;
@@ -120,9 +120,13 @@ class EmailTemplateForm
                                     ->preload()
                                     ->live()
                                     ->afterStateUpdated(function (?string $state) {
-                                        ButtonBlock::setPreviewTheme(
-                                            $state ? EmailTheme::find($state)?->resolvedColors() : null
-                                        );
+                                        $theme = $state ? EmailTheme::find($state)?->resolvedColors() : null;
+
+                                        foreach (FinMailPlugin::getCustomBlockClasses() as $blockClass) {
+                                            if (method_exists($blockClass, 'setPreviewTheme')) {
+                                                $blockClass::setPreviewTheme($theme);
+                                            }
+                                        }
                                     }),
 
                                 Toggle::make('is_active')

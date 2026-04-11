@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace FinityLabs\FinMail\Helpers;
 
 use Filament\Forms\Components\RichEditor\RichContentRenderer;
-use FinityLabs\FinMail\Editors\Blocks\ButtonBlock;
+use FinityLabs\FinMail\FinMailPlugin;
 
 class TipTapConverter
 {
@@ -27,9 +27,11 @@ class TipTapConverter
 
         $renderer = RichContentRenderer::make()
             ->content($document)
-            ->customBlocks([
-                ButtonBlock::class => ['theme' => $theme],
-            ]);
+            ->customBlocks(
+                collect(FinMailPlugin::getCustomBlockClasses())
+                    ->mapWithKeys(fn (string $blockClass) => [$blockClass => ['theme' => $theme]])
+                    ->all()
+            );
 
         if (! empty($mergeTags)) {
             $renderer->mergeTags($mergeTags);
