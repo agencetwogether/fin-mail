@@ -235,7 +235,29 @@ The editor includes a built-in Button custom block. Click the custom blocks butt
 
 The button automatically uses your theme's button colors (`button_bg` and `button_text`) in both preview and sent emails, with full inline styling for email client compatibility.
 
-To add your own custom blocks, register them on the `RichEditor` via the `EditorContract` or by extending `DefaultEditor`.
+### Custom blocks
+
+You can register your own custom blocks that work in the editor, preview, and sent emails. Each block must extend Filament's `RichContentCustomBlock`.
+
+```php
+FinMailPlugin::make()
+    ->customBlocks([
+        \App\Mail\Blocks\DividerBlock::class,
+        \App\Mail\Blocks\FooterBlock::class,
+    ]),
+```
+
+Registered blocks automatically appear in the editor's custom blocks toolbar, render in preview mode, and convert to HTML when emails are sent. ButtonBlock is always included by default.
+
+Each custom block needs to implement:
+
+- `getId()` — Unique identifier stored in the HTML
+- `getLabel()` — Display name in the editor toolbar
+- `configureEditorAction()` — Modal form for block settings
+- `toPreviewHtml()` — HTML for the editor preview
+- `toHtml()` — HTML for the actual sent email
+
+If your block uses theme colors, add a static `setPreviewTheme(?array $theme)` method and it will receive theme updates automatically when the user changes the template theme.
 
 ## Events
 
