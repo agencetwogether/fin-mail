@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create(config('fin-mail.table_names.versions') ?? 'email_template_versions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(EmailTemplate::class)
-                ->constrained('email_templates')
+                ->constrained(config('fin-mail.table_names.templates') ?? 'email_templates')
                 ->cascadeOnDelete();
             $table->unsignedInteger('version');
             $table->json('subject');

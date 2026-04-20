@@ -30,7 +30,7 @@ return new class extends Migration
             // Theme
             $table->foreignIdFor(EmailTheme::class)
                 ->nullable()
-                ->constrained('email_themes')
+                ->constrained(config('fin-mail.table_names.themes') ?? 'email_themes')
                 ->nullOnDelete();
 
             // Token documentation

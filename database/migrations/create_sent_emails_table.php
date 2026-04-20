@@ -17,7 +17,7 @@ return new class extends Migration
             // Template reference
             $table->foreignIdFor(EmailTemplate::class)
                 ->nullable()
-                ->constrained('email_templates')
+                ->constrained(config('fin-mail.table_names.templates') ?? 'email_templates')
                 ->nullOnDelete();
 
             // Sender & Recipients
