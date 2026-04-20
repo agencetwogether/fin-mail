@@ -11,7 +11,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('email_template_versions', function (Blueprint $table) {
+        Schema::create(config('fin-mail.table_names.versions') ?? 'email_template_versions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(EmailTemplate::class)
                 ->constrained('email_templates')
@@ -30,6 +30,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('email_template_versions');
+        Schema::dropIfExists(config('fin-mail.table_names.versions') ?? 'email_template_versions');
     }
 };
