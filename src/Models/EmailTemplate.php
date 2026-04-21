@@ -55,6 +55,7 @@ class EmailTemplate extends Model
         'body',
         'view_path',
         'from',
+        'reply_to',
         'email_theme_id',
         'token_schema',
         'is_active',
@@ -74,6 +75,7 @@ class EmailTemplate extends Model
     {
         return [
             'from' => 'array',
+            'reply_to' => 'array',
             'tags' => 'array',
             'is_active' => 'boolean',
             'is_locked' => 'boolean',
