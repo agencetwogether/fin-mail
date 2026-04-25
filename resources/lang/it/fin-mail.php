@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Aggiungi tag per l\'organizzazione',
             'from_address' => 'Email mittente',
             'from_name' => 'Nome mittente',
+            'reply_to_address' => 'Email del destinatario',
+            'reply_to_name' => 'Nome del destinatario',
             'locale' => 'Lingua',
         ],
 
         'sections' => [
             'custom_sender' => 'Mittente personalizzato',
             'custom_sender_description' => 'Sovrascrivi l\'indirizzo mittente predefinito per questo modello',
+            'custom_reply_to' => 'Rispondi a personalizzato',
+            'custom_reply_to_description' => 'Imposta l\'indirizzo di risposta per questo modello',
         ],
 
         'tokens' => [

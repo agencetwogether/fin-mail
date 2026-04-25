@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Lisää tunnisteita organisointiin',
             'from_address' => 'Lähettäjän sähköposti',
             'from_name' => 'Lähettäjän nimi',
+            'reply_to_address' => 'Vastaanottajan sähköposti',
+            'reply_to_name' => 'Vastaanottajan nimi',
             'locale' => 'Kieli',
         ],
 
         'sections' => [
             'custom_sender' => 'Mukautettu lähettäjä',
             'custom_sender_description' => 'Ohita oletuslähettäjäosoite tälle mallipohjalle',
+            'custom_reply_to' => 'Mukautettu vastausosoite',
+            'custom_reply_to_description' => 'Aseta vastausosoite tälle mallipohjalle',
         ],
 
         'tokens' => [

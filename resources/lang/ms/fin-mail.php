@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Tambah tag untuk penyusunan',
             'from_address' => 'E-mel Pengirim',
             'from_name' => 'Nama Pengirim',
+            'reply_to_address' => 'E-mel penerima',
+            'reply_to_name' => 'Nama penerima',
             'locale' => 'Bahasa',
         ],
 
         'sections' => [
             'custom_sender' => 'Pengirim Tersuai',
             'custom_sender_description' => 'Gantikan alamat pengirim lalai untuk templat ini',
+            'custom_reply_to' => 'Balas ke tersuai',
+            'custom_reply_to_description' => 'Tetapkan alamat balas ke untuk templat ini',
         ],
 
         'tokens' => [

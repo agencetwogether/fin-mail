@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'أضف وسومًا للتنظيم',
             'from_address' => 'البريد الإلكتروني للمرسل',
             'from_name' => 'اسم المرسل',
+            'reply_to_address' => 'البريد الإلكتروني للمستلم',
+            'reply_to_name' => 'اسم المستلم',
             'locale' => 'اللغة',
         ],
 
         'sections' => [
             'custom_sender' => 'مرسل مخصص',
             'custom_sender_description' => 'تجاوز عنوان المرسل الافتراضي لهذا القالب',
+            'custom_reply_to' => 'الرد على مخصص',
+            'custom_reply_to_description' => 'تعيين عنوان الرد لهذا القالب',
         ],
 
         'tokens' => [

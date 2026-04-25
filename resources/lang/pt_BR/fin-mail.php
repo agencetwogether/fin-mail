@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Adicionar tags para organização',
             'from_address' => 'E-mail do Remetente',
             'from_name' => 'Nome do Remetente',
+            'reply_to_address' => 'E-mail do destinatário',
+            'reply_to_name' => 'Nome do destinatário',
             'locale' => 'Idioma',
         ],
 
         'sections' => [
             'custom_sender' => 'Remetente Personalizado',
             'custom_sender_description' => 'Substituir o endereço de remetente padrão para este modelo',
+            'custom_reply_to' => 'Responder para personalizado',
+            'custom_reply_to_description' => 'Definir endereço de resposta para este modelo',
         ],
 
         'tokens' => [

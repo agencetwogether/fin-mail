@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'ترتیب کے لیے ٹیگز شامل کریں',
             'from_address' => 'بھیجنے والے کا ای میل',
             'from_name' => 'بھیجنے والے کا نام',
+            'reply_to_address' => 'وصول کنندہ کا ای میل',
+            'reply_to_name' => 'وصول کنندہ کا نام',
             'locale' => 'زبان',
         ],
 
         'sections' => [
             'custom_sender' => 'حسب ضرورت بھیجنے والا',
             'custom_sender_description' => 'اس ٹیمپلیٹ کے لیے پہلے سے طے شدہ بھیجنے والے کا پتہ تبدیل کریں',
+            'custom_reply_to' => 'حسب ضرورت جواب پتہ',
+            'custom_reply_to_description' => 'اس ٹیمپلیٹ کے لیے جواب کا پتہ سیٹ کریں',
         ],
 
         'tokens' => [

@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Ychwanegwch dagiau ar gyfer trefnu',
             'from_address' => 'E-bost yr anfonwr',
             'from_name' => 'Enw\'r anfonwr',
+            'reply_to_address' => 'E-bost y derbynnydd',
+            'reply_to_name' => 'Enw\'r derbynnydd',
             'locale' => 'Iaith',
         ],
 
         'sections' => [
             'custom_sender' => 'Anfonwr arferol',
             'custom_sender_description' => 'Disodli\'r cyfeiriad anfonwr ragosodedig ar gyfer y templed hwn',
+            'custom_reply_to' => 'Ateb i arferol',
+            'custom_reply_to_description' => 'Gosod cyfeiriad ateb ar gyfer y templed hwn',
         ],
 
         'tokens' => [

@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Shtoni etiketa per organizim',
             'from_address' => 'Emaili i derguesit',
             'from_name' => 'Emri i derguesit',
+            'reply_to_address' => 'Email i marrësit',
+            'reply_to_name' => 'Emri i marrësit',
             'locale' => 'Gjuha',
         ],
 
         'sections' => [
             'custom_sender' => 'Dergues i Personalizuar',
             'custom_sender_description' => 'Mbivendos adresen e parazgjedhur te derguesit per kete shabllon',
+            'custom_reply_to' => 'Përgjigju te personalizuar',
+            'custom_reply_to_description' => 'Vendosni adresën për përgjigje për këtë shabllon',
         ],
 
         'tokens' => [

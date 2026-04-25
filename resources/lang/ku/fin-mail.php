@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Ji bo organîzasyonê etîketan lê zêde bike',
             'from_address' => 'E-nameya şandyar',
             'from_name' => 'Navê şandyar',
+            'reply_to_address' => 'ئیمەیلی وەرگر',
+            'reply_to_name' => 'ناوی وەرگر',
             'locale' => 'Ziman',
         ],
 
         'sections' => [
             'custom_sender' => 'Şandyarê taybet',
             'custom_sender_description' => 'Ji bo vê şablonê navnîşana şandyarê standard biguherîne',
+            'custom_reply_to' => 'وەڵامدانەوەی تایبەت',
+            'custom_reply_to_description' => 'ناونیشانی وەڵامدانەوە بۆ ئەم داڕشتەیە دانێ',
         ],
 
         'tokens' => [

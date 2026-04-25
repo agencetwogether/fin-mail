@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Tartibga solish uchun teglar qo\'shing',
             'from_address' => 'Yuboruvchi elektron pochta',
             'from_name' => 'Yuboruvchi nomi',
+            'reply_to_address' => 'Qabul qiluvchi elektron pochtasi',
+            'reply_to_name' => 'Qabul qiluvchi nomi',
             'locale' => 'Til',
         ],
 
         'sections' => [
             'custom_sender' => 'Maxsus yuboruvchi',
             'custom_sender_description' => 'Ushbu shablon uchun standart yuboruvchi manzilini o\'zgartirish',
+            'custom_reply_to' => 'Maxsus javob manzili',
+            'custom_reply_to_description' => 'Ushbu shablon uchun javob manzilini sozlash',
         ],
 
         'tokens' => [

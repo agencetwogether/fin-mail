@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Agregar etiquetas para organizar',
             'from_address' => 'Correo del remitente',
             'from_name' => 'Nombre del remitente',
+            'reply_to_address' => 'Correo del destinatario',
+            'reply_to_name' => 'Nombre del destinatario',
             'locale' => 'Idioma',
         ],
 
         'sections' => [
             'custom_sender' => 'Remitente personalizado',
             'custom_sender_description' => 'Anular la dirección de remitente predeterminada para esta plantilla',
+            'custom_reply_to' => 'Responder a personalizado',
+            'custom_reply_to_description' => 'Establecer dirección de respuesta para esta plantilla',
         ],
 
         'tokens' => [

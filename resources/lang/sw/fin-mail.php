@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Ongeza lebo kwa mpangilio',
             'from_address' => 'Barua pepe ya mtumaji',
             'from_name' => 'Jina la mtumaji',
+            'reply_to_address' => 'Barua pepe ya mpokeaji',
+            'reply_to_name' => 'Jina la mpokeaji',
             'locale' => 'Lugha',
         ],
 
         'sections' => [
             'custom_sender' => 'Mtumaji maalum',
             'custom_sender_description' => 'Badilisha anwani chaguo-msingi ya mtumaji kwa kiolezo hiki',
+            'custom_reply_to' => 'Jibu kwa maalum',
+            'custom_reply_to_description' => 'Weka anwani ya kujibu kwa kiolezo hiki',
         ],
 
         'tokens' => [

@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Them the de to chuc',
             'from_address' => 'Email nguoi gui',
             'from_name' => 'Ten nguoi gui',
+            'reply_to_address' => 'Email người nhận',
+            'reply_to_name' => 'Tên người nhận',
             'locale' => 'Ngon ngu',
         ],
 
         'sections' => [
             'custom_sender' => 'Nguoi gui tuy chinh',
             'custom_sender_description' => 'Ghi de dia chi nguoi gui mac dinh cho mau nay',
+            'custom_reply_to' => 'Trả lời tùy chỉnh',
+            'custom_reply_to_description' => 'Đặt địa chỉ trả lời cho mẫu này',
         ],
 
         'tokens' => [

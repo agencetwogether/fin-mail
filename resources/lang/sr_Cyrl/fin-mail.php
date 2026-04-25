@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Додајте ознаке за организацију',
             'from_address' => 'Е-адреса пошиљаоца',
             'from_name' => 'Име пошиљаоца',
+            'reply_to_address' => 'Е-пошта примаоца',
+            'reply_to_name' => 'Име примаоца',
             'locale' => 'Језик',
         ],
 
         'sections' => [
             'custom_sender' => 'Прилагођени пошиљалац',
             'custom_sender_description' => 'Замени подразумевану адресу пошиљаоца за овај шаблон',
+            'custom_reply_to' => 'Прилагођена адреса за одговор',
+            'custom_reply_to_description' => 'Поставите адресу за одговор за овај шаблон',
         ],
 
         'tokens' => [

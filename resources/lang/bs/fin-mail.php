@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Dodajte oznake za organizaciju',
             'from_address' => 'E-mail pošiljaoca',
             'from_name' => 'Ime pošiljaoca',
+            'reply_to_address' => 'E-mail primaoca',
+            'reply_to_name' => 'Ime primaoca',
             'locale' => 'Jezik',
         ],
 
         'sections' => [
             'custom_sender' => 'Prilagođeni pošiljalac',
             'custom_sender_description' => 'Zamijenite podrazumijevanu adresu pošiljaoca za ovaj predložak',
+            'custom_reply_to' => 'Prilagođena povratna adresa',
+            'custom_reply_to_description' => 'Postavite povratnu adresu za ovaj predložak',
         ],
 
         'tokens' => [

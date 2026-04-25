@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Adaugati etichete pentru organizare',
             'from_address' => 'Email Expeditor',
             'from_name' => 'Nume Expeditor',
+            'reply_to_address' => 'E-mail destinatar',
+            'reply_to_name' => 'Nume destinatar',
             'locale' => 'Limba',
         ],
 
         'sections' => [
             'custom_sender' => 'Expeditor Personalizat',
             'custom_sender_description' => 'Suprascrie adresa de expeditor implicita pentru acest sablon',
+            'custom_reply_to' => 'Răspuns la personalizat',
+            'custom_reply_to_description' => 'Setați adresa de răspuns pentru acest șablon',
         ],
 
         'tokens' => [

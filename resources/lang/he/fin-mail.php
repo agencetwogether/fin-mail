@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'הוסף תגיות לארגון',
             'from_address' => 'דוא"ל השולח',
             'from_name' => 'שם השולח',
+            'reply_to_address' => 'דוא"ל הנמען',
+            'reply_to_name' => 'שם הנמען',
             'locale' => 'שפה',
         ],
 
         'sections' => [
             'custom_sender' => 'שולח מותאם אישית',
             'custom_sender_description' => 'עקוף את כתובת השולח המוגדרת כברירת מחדל עבור תבנית זו',
+            'custom_reply_to' => 'מענה מותאם אישית',
+            'custom_reply_to_description' => 'הגדר כתובת מענה עבור תבנית זו',
         ],
 
         'tokens' => [

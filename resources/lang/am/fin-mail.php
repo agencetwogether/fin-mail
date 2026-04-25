@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'ለማደራጀት መለያዎችን ያክሉ',
             'from_address' => 'ከኢሜይል',
             'from_name' => 'ከስም',
+            'reply_to_address' => 'ለኢሜይል',
+            'reply_to_name' => 'ለስም',
             'locale' => 'ቋንቋ',
         ],
 
         'sections' => [
             'custom_sender' => 'ብጁ ላኪ',
             'custom_sender_description' => 'ለዚህ ቅጽ ነባሪውን የላኪ አድራሻ ይቀይሩ',
+            'custom_reply_to' => 'ብጁ መልስ ለ',
+            'custom_reply_to_description' => 'ለዚህ ቅጽ የመልስ አድራሻ ያቀናብሩ',
         ],
 
         'tokens' => [

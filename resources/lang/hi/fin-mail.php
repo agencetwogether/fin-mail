@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'व्यवस्थित करने के लिए टैग जोड़ें',
             'from_address' => 'प्रेषक ईमेल',
             'from_name' => 'प्रेषक का नाम',
+            'reply_to_address' => 'प्राप्तकर्ता ईमेल',
+            'reply_to_name' => 'प्राप्तकर्ता का नाम',
             'locale' => 'भाषा',
         ],
 
         'sections' => [
             'custom_sender' => 'कस्टम प्रेषक',
             'custom_sender_description' => 'इस टेम्पलेट के लिए डिफ़ॉल्ट प्रेषक पता ओवरराइड करें',
+            'custom_reply_to' => 'कस्टम रिप्लाई-टू',
+            'custom_reply_to_description' => 'इस टेम्पलेट के लिए रिप्लाई-टू पता सेट करें',
         ],
 
         'tokens' => [

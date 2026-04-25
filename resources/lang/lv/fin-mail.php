@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Pievienojiet birkas organizesanai',
             'from_address' => 'No e-pasta',
             'from_name' => 'No varda',
+            'reply_to_address' => 'Saņēmēja e-pasts',
+            'reply_to_name' => 'Saņēmēja vārds',
             'locale' => 'Valoda',
         ],
 
         'sections' => [
             'custom_sender' => 'Pielagots sutitajs',
             'custom_sender_description' => 'Parrakstit noklusejuma sutitaja adresi sai veidnei',
+            'custom_reply_to' => 'Pielāgota atbildes adrese',
+            'custom_reply_to_description' => 'Iestatīt atbildes adresi šai veidnei',
         ],
 
         'tokens' => [

@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Зохион байгуулахад шошго нэмнэ үү',
             'from_address' => 'Илгээгчийн имэйл',
             'from_name' => 'Илгээгчийн нэр',
+            'reply_to_address' => 'Хүлээн авагчийн имэйл',
+            'reply_to_name' => 'Хүлээн авагчийн нэр',
             'locale' => 'Хэл',
         ],
 
         'sections' => [
             'custom_sender' => 'Тусгай илгээгч',
             'custom_sender_description' => 'Энэ загварын өгөгдмөл илгээгчийн хаягийг өөрчлөх',
+            'custom_reply_to' => 'Тусгай хариу хаяг',
+            'custom_reply_to_description' => 'Энэ загварт хариу хаяг тохируулах',
         ],
 
         'tokens' => [

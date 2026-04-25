@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Tags zur Organisation hinzufügen',
             'from_address' => 'Absender-E-Mail',
             'from_name' => 'Absendername',
+            'reply_to_address' => 'Empfänger-E-Mail',
+            'reply_to_name' => 'Empfängername',
             'locale' => 'Sprache',
         ],
 
         'sections' => [
             'custom_sender' => 'Benutzerdefinierter Absender',
             'custom_sender_description' => 'Standard-Absenderadresse für diese Vorlage überschreiben',
+            'custom_reply_to' => 'Benutzerdefinierte Antwortadresse',
+            'custom_reply_to_description' => 'Antwortadresse für diese Vorlage festlegen',
         ],
 
         'tokens' => [

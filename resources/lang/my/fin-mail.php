@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'စီမံဖွဲ့စည်းရန် တဂ်များထည့်ပါ',
             'from_address' => 'ပို့သူအီးမေးလ်',
             'from_name' => 'ပို့သူအမည်',
+            'reply_to_address' => 'လက်ခံသူအီးမေးလ်',
+            'reply_to_name' => 'လက်ခံသူအမည်',
             'locale' => 'ဘာသာစကား',
         ],
 
         'sections' => [
             'custom_sender' => 'စိတ်ကြိုက်ပို့သူ',
             'custom_sender_description' => 'ဤပုံစံအတွက် မူရင်းပို့သူလိပ်စာကို အစားထိုးပါ',
+            'custom_reply_to' => 'စိတ်ကြိုက်ပြန်ပို့လိပ်စာ',
+            'custom_reply_to_description' => 'ဤပုံစံအတွက် ပြန်ပို့လိပ်စာသတ်မှတ်ပါ',
         ],
 
         'tokens' => [

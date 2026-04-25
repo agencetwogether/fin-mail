@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Pridėkite žymų organizavimui',
             'from_address' => 'Siuntėjo el. paštas',
             'from_name' => 'Siuntėjo vardas',
+            'reply_to_address' => 'Gavėjo el. paštas',
+            'reply_to_name' => 'Gavėjo vardas',
             'locale' => 'Kalba',
         ],
 
         'sections' => [
             'custom_sender' => 'Pasirinktinis siuntėjas',
             'custom_sender_description' => 'Perrašyti numatytąjį siuntėjo adresą šiam šablonui',
+            'custom_reply_to' => 'Pasirinktinis atsakymo adresas',
+            'custom_reply_to_description' => 'Nustatyti atsakymo adresą šiam šablonui',
         ],
 
         'tokens' => [

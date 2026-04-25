@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => '添加标签进行分类',
             'from_address' => '发件人邮箱',
             'from_name' => '发件人名称',
+            'reply_to_address' => '收件人邮箱',
+            'reply_to_name' => '收件人姓名',
             'locale' => '语言',
         ],
 
         'sections' => [
             'custom_sender' => '自定义发件人',
             'custom_sender_description' => '覆盖此模板的默认发件人地址',
+            'custom_reply_to' => '自定义回复地址',
+            'custom_reply_to_description' => '为此模板设置回复地址',
         ],
 
         'tokens' => [

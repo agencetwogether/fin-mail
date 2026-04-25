@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Tambahkan tag untuk pengorganisasian',
             'from_address' => 'Email Pengirim',
             'from_name' => 'Nama Pengirim',
+            'reply_to_address' => 'Email penerima',
+            'reply_to_name' => 'Nama penerima',
             'locale' => 'Bahasa',
         ],
 
         'sections' => [
             'custom_sender' => 'Pengirim Kustom',
             'custom_sender_description' => 'Timpa alamat pengirim bawaan untuk templat ini',
+            'custom_reply_to' => 'Balas ke kustom',
+            'custom_reply_to_description' => 'Atur alamat balas ke untuk template ini',
         ],
 
         'tokens' => [

@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Pridat znacky na organizaciu',
             'from_address' => 'E-mail odosielatela',
             'from_name' => 'Meno odosielatela',
+            'reply_to_address' => 'E-mail príjemcu',
+            'reply_to_name' => 'Meno príjemcu',
             'locale' => 'Jazyk',
         ],
 
         'sections' => [
             'custom_sender' => 'Vlastny odosielatel',
             'custom_sender_description' => 'Prepise predvolenu adresu odosielatela pre tuto sablonu',
+            'custom_reply_to' => 'Vlastná adresa pre odpoveď',
+            'custom_reply_to_description' => 'Nastaviť adresu pre odpoveď pre túto šablónu',
         ],
 
         'tokens' => [

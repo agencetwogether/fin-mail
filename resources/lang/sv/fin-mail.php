@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Lagg till taggar for organisering',
             'from_address' => 'Avsandarens e-post',
             'from_name' => 'Avsandarens namn',
+            'reply_to_address' => 'Mottagar-e-post',
+            'reply_to_name' => 'Mottagarnamn',
             'locale' => 'Sprak',
         ],
 
         'sections' => [
             'custom_sender' => 'Anpassad avsandare',
             'custom_sender_description' => 'Overskrid standardavsandaradressen for denna mall',
+            'custom_reply_to' => 'Anpassad svarsadress',
+            'custom_reply_to_description' => 'Ange svarsadress för denna mall',
         ],
 
         'tokens' => [

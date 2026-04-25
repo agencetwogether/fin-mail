@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Προσθέστε ετικέτες για οργάνωση',
             'from_address' => 'Email αποστολέα',
             'from_name' => 'Όνομα αποστολέα',
+            'reply_to_address' => 'Email παραλήπτη',
+            'reply_to_name' => 'Όνομα παραλήπτη',
             'locale' => 'Γλώσσα',
         ],
 
         'sections' => [
             'custom_sender' => 'Προσαρμοσμένος αποστολέας',
             'custom_sender_description' => 'Παράκαμψη της προεπιλεγμένης διεύθυνσης αποστολέα για αυτό το πρότυπο',
+            'custom_reply_to' => 'Προσαρμοσμένη διεύθυνση απάντησης',
+            'custom_reply_to_description' => 'Ορίστε διεύθυνση απάντησης για αυτό το πρότυπο',
         ],
 
         'tokens' => [

@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Tilføj tags til organisering',
             'from_address' => 'Afsender-e-mail',
             'from_name' => 'Afsendernavn',
+            'reply_to_address' => 'Modtager-e-mail',
+            'reply_to_name' => 'Modtagernavn',
             'locale' => 'Sprog',
         ],
 
         'sections' => [
             'custom_sender' => 'Brugerdefineret afsender',
             'custom_sender_description' => 'Tilsidesæt standardafsenderadressen for denne skabelon',
+            'custom_reply_to' => 'Brugerdefineret svar-til',
+            'custom_reply_to_description' => 'Angiv svaradresse for denne skabelon',
         ],
 
         'tokens' => [

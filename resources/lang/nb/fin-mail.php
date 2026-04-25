@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Legg til etiketter for organisering',
             'from_address' => 'Fra e-post',
             'from_name' => 'Fra navn',
+            'reply_to_address' => 'Mottaker-e-post',
+            'reply_to_name' => 'Mottakernavn',
             'locale' => 'Språk',
         ],
 
         'sections' => [
             'custom_sender' => 'Egendefinert avsender',
             'custom_sender_description' => 'Overstyr standard avsenderadresse for denne malen',
+            'custom_reply_to' => 'Tilpasset svaradresse',
+            'custom_reply_to_description' => 'Angi svaradresse for denne malen',
         ],
 
         'tokens' => [

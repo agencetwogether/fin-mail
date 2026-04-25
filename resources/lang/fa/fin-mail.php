@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'برچسب‌هایی برای سازماندهی اضافه کنید',
             'from_address' => 'ایمیل فرستنده',
             'from_name' => 'نام فرستنده',
+            'reply_to_address' => 'ایمیل گیرنده',
+            'reply_to_name' => 'نام گیرنده',
             'locale' => 'زبان',
         ],
 
         'sections' => [
             'custom_sender' => 'فرستنده سفارشی',
             'custom_sender_description' => 'بازنویسی آدرس فرستنده پیش‌فرض برای این قالب',
+            'custom_reply_to' => 'پاسخ به سفارشی',
+            'custom_reply_to_description' => 'تنظیم آدرس پاسخ برای این قالب',
         ],
 
         'tokens' => [

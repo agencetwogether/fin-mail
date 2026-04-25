@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Duzenleme icin etiket ekleyin',
             'from_address' => 'Gonderen e-posta',
             'from_name' => 'Gonderen adi',
+            'reply_to_address' => 'Alıcı e-postası',
+            'reply_to_name' => 'Alıcı adı',
             'locale' => 'Dil',
         ],
 
         'sections' => [
             'custom_sender' => 'Ozel gonderen',
             'custom_sender_description' => 'Bu sablon icin varsayilan gonderen adresini gecersiz kil',
+            'custom_reply_to' => 'Özel yanıt adresi',
+            'custom_reply_to_description' => 'Bu şablon için yanıt adresini ayarla',
         ],
 
         'tokens' => [

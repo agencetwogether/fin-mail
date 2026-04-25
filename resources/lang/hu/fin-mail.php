@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Címkék hozzáadása a rendszerezéshez',
             'from_address' => 'Feladó e-mail',
             'from_name' => 'Feladó neve',
+            'reply_to_address' => 'Címzett e-mail',
+            'reply_to_name' => 'Címzett neve',
             'locale' => 'Nyelv',
         ],
 
         'sections' => [
             'custom_sender' => 'Egyéni feladó',
             'custom_sender_description' => 'Az alapértelmezett feladó cím felülírása ehhez a sablonhoz',
+            'custom_reply_to' => 'Egyéni válaszcím',
+            'custom_reply_to_description' => 'Válaszcím beállítása ehhez a sablonhoz',
         ],
 
         'tokens' => [

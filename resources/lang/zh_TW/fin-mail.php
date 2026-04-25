@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => '新增標籤進行分類',
             'from_address' => '寄件人信箱',
             'from_name' => '寄件人名稱',
+            'reply_to_address' => '收件人電子郵件',
+            'reply_to_name' => '收件人姓名',
             'locale' => '語言',
         ],
 
         'sections' => [
             'custom_sender' => '自訂寄件人',
             'custom_sender_description' => '覆寫此範本的預設寄件人地址',
+            'custom_reply_to' => '自訂回覆地址',
+            'custom_reply_to_description' => '為此範本設定回覆地址',
         ],
 
         'tokens' => [

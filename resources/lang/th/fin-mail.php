@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'เพิ่มแท็กเพื่อจัดระเบียบ',
             'from_address' => 'อีเมลผู้ส่ง',
             'from_name' => 'ชื่อผู้ส่ง',
+            'reply_to_address' => 'อีเมลผู้รับ',
+            'reply_to_name' => 'ชื่อผู้รับ',
             'locale' => 'ภาษา',
         ],
 
         'sections' => [
             'custom_sender' => 'ผู้ส่งที่กำหนดเอง',
             'custom_sender_description' => 'แทนที่ที่อยู่ผู้ส่งเริ่มต้นสำหรับเทมเพลตนี้',
+            'custom_reply_to' => 'ตอบกลับไปยังแบบกำหนดเอง',
+            'custom_reply_to_description' => 'ตั้งค่าที่อยู่ตอบกลับสำหรับเทมเพลตนี้',
         ],
 
         'tokens' => [

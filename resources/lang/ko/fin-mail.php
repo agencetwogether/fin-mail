@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => '정리를 위한 태그 추가',
             'from_address' => '보내는 이메일 주소',
             'from_name' => '보내는 사람 이름',
+            'reply_to_address' => '수신자 이메일',
+            'reply_to_name' => '수신자 이름',
             'locale' => '언어',
         ],
 
         'sections' => [
             'custom_sender' => '사용자 지정 발신자',
             'custom_sender_description' => '이 템플릿의 기본 발신 주소를 재정의합니다',
+            'custom_reply_to' => '사용자 지정 회신 주소',
+            'custom_reply_to_description' => '이 템플릿의 회신 주소 설정',
         ],
 
         'tokens' => [

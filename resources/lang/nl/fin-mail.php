@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Voeg tags toe voor organisatie',
             'from_address' => 'Van e-mail',
             'from_name' => 'Van naam',
+            'reply_to_address' => 'E-mail ontvanger',
+            'reply_to_name' => 'Naam ontvanger',
             'locale' => 'Taal',
         ],
 
         'sections' => [
             'custom_sender' => 'Aangepaste afzender',
             'custom_sender_description' => 'Overschrijf het standaard afzenderadres voor dit sjabloon',
+            'custom_reply_to' => 'Aangepast antwoordadres',
+            'custom_reply_to_description' => 'Stel antwoordadres in voor dit sjabloon',
         ],
 
         'tokens' => [

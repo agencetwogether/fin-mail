@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'সংগঠনের জন্য ট্যাগ যোগ করুন',
             'from_address' => 'প্রেরকের ইমেইল',
             'from_name' => 'প্রেরকের নাম',
+            'reply_to_address' => 'প্রাপকের ইমেইল',
+            'reply_to_name' => 'প্রাপকের নাম',
             'locale' => 'ভাষা',
         ],
 
         'sections' => [
             'custom_sender' => 'কাস্টম প্রেরক',
             'custom_sender_description' => 'এই টেমপ্লেটের জন্য ডিফল্ট প্রেরকের ঠিকানা পরিবর্তন করুন',
+            'custom_reply_to' => 'কাস্টম রিপ্লাই-টু',
+            'custom_reply_to_description' => 'এই টেমপ্লেটের জন্য রিপ্লাই-টু ঠিকানা সেট করুন',
         ],
 
         'tokens' => [

@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'បន្ថែមស្លាកសម្រាប់រៀបចំ',
             'from_address' => 'អ៊ីមែលអ្នកផ្ញើ',
             'from_name' => 'ឈ្មោះអ្នកផ្ញើ',
+            'reply_to_address' => 'អ៊ីមែលអ្នកទទួល',
+            'reply_to_name' => 'ឈ្មោះអ្នកទទួល',
             'locale' => 'ភាសា',
         ],
 
         'sections' => [
             'custom_sender' => 'អ្នកផ្ញើផ្ទាល់ខ្លួន',
             'custom_sender_description' => 'បដិសេធអាសយដ្ឋានអ្នកផ្ញើលំនាំដើមសម្រាប់គំរូនេះ',
+            'custom_reply_to' => 'អាសយដ្ឋានឆ្លើយតបផ្ទាល់ខ្លួន',
+            'custom_reply_to_description' => 'កំណត់អាសយដ្ឋានឆ្លើយតបសម្រាប់ពុម្ពនេះ',
         ],
 
         'tokens' => [

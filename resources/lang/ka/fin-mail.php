@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'დაამატეთ ტეგები ორგანიზებისთვის',
             'from_address' => 'გამგზავნის ელფოსტა',
             'from_name' => 'გამგზავნის სახელი',
+            'reply_to_address' => 'მიმღების ელფოსტა',
+            'reply_to_name' => 'მიმღების სახელი',
             'locale' => 'ენა',
         ],
 
         'sections' => [
             'custom_sender' => 'მორგებული გამგზავნი',
             'custom_sender_description' => 'ამ შაბლონისთვის ნაგულისხმევი გამგზავნის მისამართის გადაფარვა',
+            'custom_reply_to' => 'მორგებული პასუხის მისამართი',
+            'custom_reply_to_description' => 'დააყენეთ პასუხის მისამართი ამ შაბლონისთვის',
         ],
 
         'tokens' => [

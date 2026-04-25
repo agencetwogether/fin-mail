@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'تاگ زیادبکە بۆ ڕێکخستن',
             'from_address' => 'ئیمەیلی نێرەر',
             'from_name' => 'ناوی نێرەر',
+            'reply_to_address' => 'ئیمەیلی وەرگر',
+            'reply_to_name' => 'ناوی وەرگر',
             'locale' => 'زمان',
         ],
 
         'sections' => [
             'custom_sender' => 'نێرەری تایبەت',
             'custom_sender_description' => 'ناونیشانی نێرەری بنەڕەت بۆ ئەم داڕشتەیە بگۆڕە',
+            'custom_reply_to' => 'وەڵامدانەوەی تایبەت',
+            'custom_reply_to_description' => 'ناونیشانی وەڵامدانەوە بۆ ئەم داڕشتەیە دیاری بکە',
         ],
 
         'tokens' => [

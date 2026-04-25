@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Přidejte štítky pro organizaci',
             'from_address' => 'E-mail odesílatele',
             'from_name' => 'Jméno odesílatele',
+            'reply_to_address' => 'E-mail příjemce',
+            'reply_to_name' => 'Jméno příjemce',
             'locale' => 'Jazyk',
         ],
 
         'sections' => [
             'custom_sender' => 'Vlastní odesílatel',
             'custom_sender_description' => 'Přepsat výchozí adresu odesílatele pro tuto šablonu',
+            'custom_reply_to' => 'Vlastní adresa pro odpověď',
+            'custom_reply_to_description' => 'Nastavit adresu pro odpověď pro tuto šablonu',
         ],
 
         'tokens' => [

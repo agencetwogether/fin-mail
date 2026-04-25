@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Afegiu etiquetes per organitzar',
             'from_address' => 'Correu del remitent',
             'from_name' => 'Nom del remitent',
+            'reply_to_address' => 'Correu del destinatari',
+            'reply_to_name' => 'Nom del destinatari',
             'locale' => 'Idioma',
         ],
 
         'sections' => [
             'custom_sender' => 'Remitent personalitzat',
             'custom_sender_description' => 'Substituïu l\'adreça del remitent per defecte per a aquesta plantilla',
+            'custom_reply_to' => 'Resposta personalitzada',
+            'custom_reply_to_description' => 'Definiu l\'adreça de resposta per a aquesta plantilla',
         ],
 
         'tokens' => [

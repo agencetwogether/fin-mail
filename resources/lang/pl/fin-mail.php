@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Dodaj tagi do organizacji',
             'from_address' => 'E-mail nadawcy',
             'from_name' => 'Nazwa nadawcy',
+            'reply_to_address' => 'E-mail odbiorcy',
+            'reply_to_name' => 'Nazwa odbiorcy',
             'locale' => 'Język',
         ],
 
         'sections' => [
             'custom_sender' => 'Niestandardowy nadawca',
             'custom_sender_description' => 'Nadpisz domyślny adres nadawcy dla tego szablonu',
+            'custom_reply_to' => 'Niestandardowy adres odpowiedzi',
+            'custom_reply_to_description' => 'Ustaw adres odpowiedzi dla tego szablonu',
         ],
 
         'tokens' => [

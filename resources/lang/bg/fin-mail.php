@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Добавете етикети за организация',
             'from_address' => 'Имейл на подателя',
             'from_name' => 'Име на подателя',
+            'reply_to_address' => 'Имейл на получателя',
+            'reply_to_name' => 'Име на получателя',
             'locale' => 'Език',
         ],
 
         'sections' => [
             'custom_sender' => 'Персонализиран подател',
             'custom_sender_description' => 'Заменете адреса на подателя по подразбиране за този шаблон',
+            'custom_reply_to' => 'Персонализиран адрес за отговор',
+            'custom_reply_to_description' => 'Задайте адрес за отговор за този шаблон',
         ],
 
         'tokens' => [

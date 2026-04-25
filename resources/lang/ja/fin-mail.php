@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => '整理用のタグを追加',
             'from_address' => '差出人メールアドレス',
             'from_name' => '差出人名',
+            'reply_to_address' => '受信者のメール',
+            'reply_to_name' => '受信者の名前',
             'locale' => '言語',
         ],
 
         'sections' => [
             'custom_sender' => 'カスタム差出人',
             'custom_sender_description' => 'このテンプレートのデフォルト差出人アドレスを上書きします',
+            'custom_reply_to' => 'カスタム返信先',
+            'custom_reply_to_description' => 'このテンプレートの返信先アドレスを設定',
         ],
 
         'tokens' => [

@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Добавить теги для организации',
             'from_address' => 'Email отправителя',
             'from_name' => 'Имя отправителя',
+            'reply_to_address' => 'Email получателя',
+            'reply_to_name' => 'Имя получателя',
             'locale' => 'Язык',
         ],
 
         'sections' => [
             'custom_sender' => 'Пользовательский отправитель',
             'custom_sender_description' => 'Переопределить адрес отправителя по умолчанию для этого шаблона',
+            'custom_reply_to' => 'Пользовательский адрес ответа',
+            'custom_reply_to_description' => 'Задать адрес для ответа для этого шаблона',
         ],
 
         'tokens' => [

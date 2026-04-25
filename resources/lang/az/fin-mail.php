@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Təşkilatlandırma üçün etiketlər əlavə edin',
             'from_address' => 'Göndərən e-poçt',
             'from_name' => 'Göndərən adı',
+            'reply_to_address' => 'Alıcının e-poçtu',
+            'reply_to_name' => 'Alıcının adı',
             'locale' => 'Dil',
         ],
 
         'sections' => [
             'custom_sender' => 'Xüsusi göndərən',
             'custom_sender_description' => 'Bu şablon üçün standart göndərən ünvanını dəyişdirin',
+            'custom_reply_to' => 'Xüsusi cavab ünvanı',
+            'custom_reply_to_description' => 'Bu şablon üçün cavab ünvanını təyin edin',
         ],
 
         'tokens' => [

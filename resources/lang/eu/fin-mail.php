@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'Gehitu etiketak antolatzeko',
             'from_address' => 'Bidaltzailearen emaila',
             'from_name' => 'Bidaltzailearen izena',
+            'reply_to_address' => 'Hartzailearen emaila',
+            'reply_to_name' => 'Hartzailearen izena',
             'locale' => 'Hizkuntza',
         ],
 
         'sections' => [
             'custom_sender' => 'Bidaltzaile pertsonalizatua',
             'custom_sender_description' => 'Txantiloi honetarako bidaltzaile-helbide lehenetsia gainidatzi',
+            'custom_reply_to' => 'Erantzun helbide pertsonalizatua',
+            'custom_reply_to_description' => 'Ezarri erantzun helbidea txantiloi honetarako',
         ],
 
         'tokens' => [

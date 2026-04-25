@@ -58,12 +58,16 @@ return [
             'tags_placeholder' => 'व्यवस्थापनका लागि ट्यागहरू थप्नुहोस्',
             'from_address' => 'प्रेषक इमेल',
             'from_name' => 'प्रेषक नाम',
+            'reply_to_address' => 'प्राप्तकर्ता इमेल',
+            'reply_to_name' => 'प्राप्तकर्ताको नाम',
             'locale' => 'भाषा',
         ],
 
         'sections' => [
             'custom_sender' => 'अनुकूलन प्रेषक',
             'custom_sender_description' => 'यो टेम्प्लेटको लागि पूर्वनिर्धारित प्रेषक ठेगाना ओभरराइड गर्नुहोस्',
+            'custom_reply_to' => 'अनुकूलन उत्तर दिनुहोस्',
+            'custom_reply_to_description' => 'यो टेम्प्लेटको लागि उत्तर ठेगाना सेट गर्नुहोस्',
         ],
 
         'tokens' => [
